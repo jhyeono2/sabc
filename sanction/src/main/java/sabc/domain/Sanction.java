@@ -46,6 +46,7 @@ public class Sanction {
         //implement business logic here:
 
         Sanction sanction = new Sanction();
+        sanction.setId(firstConfirmed.getId());
         sanction.setAcceptNo(firstConfirmed.getAcceptNo());
         sanction.setCustomerId(firstConfirmed.getCustomerId());
         sanction.setCustomerName(firstConfirmed.getCustomerName());
@@ -60,6 +61,7 @@ public class Sanction {
 
         if("KIMJEONGEUN".equals(sanction.getCounterPartyName())){
             SecondRejected secondRejected = new SecondRejected();
+            secondRejected.setId(sanction.getId());
             secondRejected.setAcceptNo(sanction.getAcceptNo());
             secondRejected.setStatus("reject");
             secondRejected.setMessage("KIMJEONGEUN cannot confirmed");
@@ -67,6 +69,7 @@ public class Sanction {
             System.out.println("secondReject publish");
         }else{
             SecondConfirmed secondConfirmed = new SecondConfirmed();
+            secondConfirmed.setId(sanction.getId());
             secondConfirmed.setAcceptNo(sanction.getAcceptNo());
             secondConfirmed.setStatus("confirmed");
             secondConfirmed.setMessage("confirmed");

@@ -62,7 +62,7 @@ public class Review {
         String status = this.getStatus();
         System.out.println("status after patch:"+status);
         switch (status) {
-            case "confirmed":
+            case "firstConfirmed":
                 FirstConfirmed firstConfirmed = new FirstConfirmed(this);
                 firstConfirmed.publishAfterCommit();
                 System.out.println("firstConfirm publish");
@@ -80,6 +80,7 @@ public class Review {
         System.out.println("regist start");
         //implement business logic here:
         Review review = new Review();
+        review.setId(documentAccepted.getId());
         review.setAcceptNo(documentAccepted.getAcceptNo());
         review.setBranchNo(documentAccepted.getBranchNo());
         review.setCustomerId(documentAccepted.getCustomerId());
@@ -129,6 +130,7 @@ public class Review {
         repository().save(review);
 
         Completed completed = new Completed();
+        completed.setId(jobCompleted.getId());
         completed.setAcceptNo(jobCompleted.getAcceptNo());
         completed.setStatus(jobCompleted.getStatus());
         completed.setMessage(jobCompleted.getMessage());
@@ -145,6 +147,7 @@ public class Review {
         repository().save(review);
 
         Rejected rejected = new Rejected();
+        rejected.setId(jobRejected.getId());
         rejected.setAcceptNo(jobRejected.getAcceptNo());
         rejected.setStatus(jobRejected.getStatus());
         rejected.setMessage(jobRejected.getMessage());

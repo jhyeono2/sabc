@@ -1,6 +1,6 @@
 cd /workspace/sabc/gateway
 mvn clean package
-docker build --no-cache -t jhyeono2/gatewayranch:v1 .
+docker build --no-cache -t jhyeono2/gateway:v1 .
 docker push jhyeono2/gateway:v1
 
 cd /workspace/sabc/center
