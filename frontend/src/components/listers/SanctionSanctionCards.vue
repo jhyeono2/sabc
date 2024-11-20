@@ -108,10 +108,10 @@
                 'status': '',
                 'importCountry': '',
                 'exportCountry': '',
-                'counterpartyName': '',
+                'counterPartyName': '',
                 'userId': '',
                 'userName': '',
-                'counterpartyId': '',
+                'counterPartyId': '',
             }
         },
         methods:{

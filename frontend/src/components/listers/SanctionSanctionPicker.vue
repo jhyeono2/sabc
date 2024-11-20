@@ -27,7 +27,7 @@
                                 ExportCountry :  {{item.exportCountry }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                CounterpartyName :  {{item.counterpartyName }}
+                                CounterPartyName :  {{item.counterPartyName }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
                                 UserId :  {{item.userId }}
@@ -36,7 +36,7 @@
                                 UserName :  {{item.userName }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                CounterpartyId :  {{item.counterpartyId }}
+                                CounterPartyId :  {{item.counterPartyId }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 

@@ -20,10 +20,10 @@
             <String label="Status" v-model="value.status" :editMode="editMode" :inputUI="''"/>
             <String label="ImportCountry" v-model="value.importCountry" :editMode="editMode" :inputUI="''"/>
             <String label="ExportCountry" v-model="value.exportCountry" :editMode="editMode" :inputUI="''"/>
-            <String label="CounterpartyName" v-model="value.counterpartyName" :editMode="editMode" :inputUI="''"/>
+            <String label="CounterPartyName" v-model="value.counterPartyName" :editMode="editMode" :inputUI="''"/>
             <String label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
             <String label="UserName" v-model="value.userName" :editMode="editMode" :inputUI="''"/>
-            <String label="CounterpartyId" v-model="value.counterpartyId" :editMode="editMode" :inputUI="''"/>
+            <String label="CounterPartyId" v-model="value.counterPartyId" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions style="background-color: white;">
