@@ -1,98 +1,58 @@
 package sabc.domain;
 
-import sabc.domain.2ndConfirmed;
-import sabc.domain.2ndRejected;
-import sabc.SanctionApplication;
-import javax.persistence.*;
-import java.util.List;
-import lombok.Data;
-import java.util.Date;
 import java.time.LocalDate;
-
+import java.util.Date;
+import java.util.List;
+import javax.persistence.*;
+import lombok.Data;
+import sabc.SanctionApplication;
+import sabc.domain.SecondConfirmed;
+import sabc.domain.SecondRejected;
 
 @Entity
-@Table(name="Sanction_table")
+@Table(name = "Sanction_table")
 @Data
-
 //<<< DDD / Aggregate Root
-public class Sanction  {
+public class Sanction {
 
-
-    
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    
-    
-    
-    
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    
-    
-    
+
     private String acceptNo;
-    
-    
-    
-    
+
     private String status;
-    
-    
-    
-    
+
     private String importCountry;
-    
-    
-    
-    
+
     private String exportCountry;
-    
-    
-    
-    
+
     private String counterpartyName;
-    
-    
-    
-    
+
     private String userId;
-    
-    
-    
-    
+
     private String userName;
-    
-    
-    
-    
+
     private String counterpartyId;
 
     @PostPersist
-    public void onPostPersist(){
+    public void onPostPersist() {
+        SecondConfirmed secondConfirmed = new SecondConfirmed(this);
+        secondConfirmed.publishAfterCommit();
 
-
-        2ndConfirmed 2ndConfirmed = new 2ndConfirmed(this);
-        2ndConfirmed.publishAfterCommit();
-
-
-
-        2ndRejected 2ndRejected = new 2ndRejected(this);
-        2ndRejected.publishAfterCommit();
-
-    
+        SecondRejected secondRejected = new SecondRejected(this);
+        secondRejected.publishAfterCommit();
     }
 
-    public static SanctionRepository repository(){
-        SanctionRepository sanctionRepository = SanctionApplication.applicationContext.getBean(SanctionRepository.class);
+    public static SanctionRepository repository() {
+        SanctionRepository sanctionRepository = SanctionApplication.applicationContext.getBean(
+            SanctionRepository.class
+        );
         return sanctionRepository;
     }
 
-
-
-
-//<<< Clean Arch / Port Method
-    public static void startScreening(1stConfirmed 1stConfirmed){
-        
+    //<<< Clean Arch / Port Method
+    public static void startScreening(FirstConfirmed firstConfirmed) {
         //implement business logic here:
 
         /** Example 1:  new item 
@@ -103,7 +63,7 @@ public class Sanction  {
 
         /** Example 2:  finding and process
         
-        repository().findById(1stConfirmed.get???()).ifPresent(sanction->{
+        repository().findById(firstConfirmed.get???()).ifPresent(sanction->{
             
             sanction // do something
             repository().save(sanction);
@@ -112,10 +72,8 @@ public class Sanction  {
          });
         */
 
-        
     }
-//>>> Clean Arch / Port Method
-
+    //>>> Clean Arch / Port Method
 
 }
 //>>> DDD / Aggregate Root
