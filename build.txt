@@ -1,0 +1,30 @@
+cd /workspace/sabc/branch
+mvn clean package
+docker build --no-cache -t jhyeono2/branch:v1 .
+docker push jhyeono2/branch:v1
+
+cd /workspace/sabc/center
+mvn clean package
+docker build --no-cache -t jhyeono2/center:v1 .
+docker push jhyeono2/center:v1
+
+cd /workspace/sabc/dashboard
+mvn clean package
+docker build --no-cache -t jhyeono2/dashboard:v1 .
+docker push jhyeono2/dashboard:v1
+
+cd /workspace/sabc/host
+mvn clean package
+docker build --no-cache -t jhyeono2/host:v1 .
+docker push jhyeono2/host:v1
+
+cd /workspace/sabc/sanction
+mvn clean package
+docker build --no-cache -t jhyeono2/sanction:v1 .
+docker push jhyeono2/sanction:v1
+
+cd /workspace/sabc/swift
+mvn clean package
+docker build --no-cache -t jhyeono2/swift:v1 .
+docker push jhyeono2/swift:v1
+

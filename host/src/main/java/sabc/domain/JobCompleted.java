@@ -16,7 +16,7 @@ public class JobCompleted extends AbstractEvent {
     private String status;
     private String resultMessage;
 
-    public JobCompleted(Host aggregate) {
+    public JobCompleted(Account aggregate) {
         super(aggregate);
     }
 

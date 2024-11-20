@@ -6,8 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import sabc.HostApplication;
-import sabc.domain.JobCompleted;
-import sabc.domain.JobRejected;
 
 @Entity
 @Table(name = "Account_table")
@@ -44,15 +42,6 @@ public class Account {
     private String exportCountry;
 
     private String branchNo;
-
-    @PostPersist
-    public void onPostPersist() {
-        JobCompleted jobCompleted = new JobCompleted(this);
-        jobCompleted.publishAfterCommit();
-
-        JobRejected jobRejected = new JobRejected(this);
-        jobRejected.publishAfterCommit();
-    }
 
     public static AccountRepository repository() {
         AccountRepository accountRepository = HostApplication.applicationContext.getBean(

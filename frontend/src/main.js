@@ -52,7 +52,7 @@ pluralCaseList.push( {plural: "centers/reviews", pascal: "CenterReview"} )
 
 pluralCaseList.push( {plural: "sanctions/sanctions", pascal: "SanctionSanction"} )
 
-pluralCaseList.push( {plural: "hosts/hosts", pascal: "HostHost"} )
+pluralCaseList.push( {plural: "hosts/accounts", pascal: "HostAccount"} )
 pluralCaseList.push( {plural: "/", pascal: ""} )
 
 pluralCaseList.push( {plural: "/", pascal: ""} )

@@ -24,7 +24,7 @@ spring:
         - id: host
           uri: http://localhost:0
           predicates:
-            - Path=/hosts/**, /undefined/**, 
+            - Path=/accounts/**, /undefined/**, 
         - id: dashboard
           uri: http://localhost:0
           predicates:
@@ -72,7 +72,7 @@ spring:
         - id: host
           uri: http://host:8080
           predicates:
-            - Path=/hosts/**, /undefined/**, 
+            - Path=/accounts/**, /undefined/**, 
         - id: dashboard
           uri: http://dashboard:8080
           predicates:

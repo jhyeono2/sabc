@@ -16,8 +16,8 @@ import CenterReviewDetail from "./components/listers/CenterReviewDetail"
 import SanctionSanctionManager from "./components/listers/SanctionSanctionCards"
 import SanctionSanctionDetail from "./components/listers/SanctionSanctionDetail"
 
-import HostHostManager from "./components/listers/HostHostCards"
-import HostHostDetail from "./components/listers/HostHostDetail"
+import HostAccountManager from "./components/listers/HostAccountCards"
+import HostAccountDetail from "./components/listers/HostAccountDetail"
 import Manager from "./components/listers/Cards"
 import Detail from "./components/listers/Detail"
 
@@ -76,14 +76,14 @@ export default new Router({
             },
 
             {
-                path: '/hosts/hosts',
-                name: 'HostHostManager',
-                component: HostHostManager
+                path: '/hosts/accounts',
+                name: 'HostAccountManager',
+                component: HostAccountManager
             },
             {
-                path: '/hosts/hosts/:id',
-                name: 'HostHostDetail',
-                component: HostHostDetail
+                path: '/hosts/accounts/:id',
+                name: 'HostAccountDetail',
+                component: HostAccountDetail
             },
             {
                 path: '//',

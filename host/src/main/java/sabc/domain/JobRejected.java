@@ -16,7 +16,7 @@ public class JobRejected extends AbstractEvent {
     private String status;
     private String resultMessage;
 
-    public JobRejected(Host aggregate) {
+    public JobRejected(Account aggregate) {
         super(aggregate);
     }
 

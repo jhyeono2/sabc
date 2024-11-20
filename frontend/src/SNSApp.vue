@@ -83,13 +83,13 @@
 
                     <v-list-item
                         class="px-2"
-                        key="hosts"
-                        to="/hosts/hosts"
+                        key="accounts"
+                        to="/hosts/accounts"
                         @click="changeUrl()"
                         color="primary"
                         style="font-weight:700;"
                     >
-                        Host
+                        Account
                     </v-list-item>
 
                     <v-list-item
@@ -235,10 +235,10 @@ export default {
                 ImageUrl: '',
             },
             { 
-                title: 'Host', 
+                title: 'Account', 
                 description: '', 
-                key: 'hosts', 
-                route: '/hosts/hosts',
+                key: 'accounts', 
+                route: '/hosts/accounts',
                 ImageUrl: '',
             },
             { 
