@@ -24,8 +24,8 @@ public class PolicyHandler {
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='Comleted'"
     )
-    public void wheneverComleted_Notify(@Payload Comleted comleted) {
-        Comleted event = comleted;
+    public void wheneverComleted_Notify(@Payload Completed comleted) {
+        Completed event = comleted;
         System.out.println("\n\n##### listener Notify : " + comleted + "\n\n");
 
         // Sample Logic //

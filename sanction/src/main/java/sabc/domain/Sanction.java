@@ -42,27 +42,38 @@ public class Sanction {
 
     //<<< Clean Arch / Port Method
     public static void startScreening(FirstConfirmed firstConfirmed) {
+        System.out.println("startScreening");
         //implement business logic here:
 
-        /** Example 1:  new item 
         Sanction sanction = new Sanction();
+        sanction.setAcceptNo(firstConfirmed.getAcceptNo());
+        sanction.setCustomerId(firstConfirmed.getCustomerId());
+        sanction.setCustomerName(firstConfirmed.getCustomerName());
+        sanction.setCounterPartyId(firstConfirmed.getCounterPartyId());
+        sanction.setCounterPartyName(firstConfirmed.getCounterPartyName());
+        sanction.setImportCountry(firstConfirmed.getImportCountry());
+        sanction.setExportCountry(firstConfirmed.getExportCountry());
+        sanction.setStatus(firstConfirmed.getStatus());
+        
+        System.out.println("sanction save:"+sanction.toString());
         repository().save(sanction);
 
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(firstConfirmed.get???()).ifPresent(sanction->{
-            
-            sanction // do something
-            repository().save(sanction);
-
-
-         });
-        */
-
+        if("KIMJEONGEUN".equals(sanction.getCounterPartyName())){
+            SecondRejected secondRejected = new SecondRejected();
+            secondRejected.setAcceptNo(sanction.getAcceptNo());
+            secondRejected.setStatus("reject");
+            secondRejected.setMessage("KIMJEONGEUN cannot confirmed");
+            secondRejected.publishAfterCommit();
+            System.out.println("secondReject publish");
+        }else{
+            SecondConfirmed secondConfirmed = new SecondConfirmed();
+            secondConfirmed.setAcceptNo(sanction.getAcceptNo());
+            secondConfirmed.setStatus("confirmed");
+            secondConfirmed.setMessage("confirmed");
+            secondConfirmed.publishAfterCommit();
+            System.out.println("secondConfirmed publish");
+        }
     }
     //>>> Clean Arch / Port Method
-
 }
 //>>> DDD / Aggregate Root

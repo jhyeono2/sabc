@@ -48,6 +48,8 @@ public class Review {
 
     private String status;
 
+    private String rejectMessage;
+
     public static ReviewRepository repository() {
         ReviewRepository reviewRepository = CenterApplication.applicationContext.getBean(
             ReviewRepository.class
@@ -55,141 +57,99 @@ public class Review {
         return reviewRepository;
     }
 
+    @PostUpdate
+    public void onPostUpdate() {
+        String status = this.getStatus();
+        System.out.println("status after patch:"+status);
+        switch (status) {
+            case "confirmed":
+                FirstConfirmed firstConfirmed = new FirstConfirmed(this);
+                firstConfirmed.publishAfterCommit();
+                System.out.println("firstConfirm publish");
+                break;
+            case "rejected":
+                Rejected rejected = new Rejected(this);
+                rejected.publishAfterCommit();
+                System.out.println("reject publish");
+                break;
+        }
+    }
+
     //<<< Clean Arch / Port Method
     public static void regist(DocumentAccepted documentAccepted) {
+        System.out.println("regist start");
         //implement business logic here:
-
-        /** Example 1:  new item 
         Review review = new Review();
+        review.setAcceptNo(documentAccepted.getAcceptNo());
+        review.setBranchNo(documentAccepted.getBranchNo());
+        review.setCustomerId(documentAccepted.getCustomerId());
+        review.setCustomerName(documentAccepted.getCustomerName());
+        review.setDocumentImg(documentAccepted.getDocumentImg());
+        review.setTranType(documentAccepted.getTranType());
+        review.setStatus(documentAccepted.getStatus());
+        System.out.println(review.toString());
         repository().save(review);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(documentAccepted.get???()).ifPresent(review->{
-            
-            review // do something
-            repository().save(review);
-
-
-         });
-        */
-
+        System.out.println("review data saved");
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void receive2ndResult(SecondRejected secondRejected) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Review review = new Review();
+        System.out.println("receive secondRejected:" + secondRejected.getAcceptNo());
+        Review review = repository().findById(secondRejected.getId()).orElseThrow();
+        review.setStatus("secondRejected");
         repository().save(review);
 
-        Approved approved = new Approved(review);
-        approved.publishAfterCommit();
         Rejected rejected = new Rejected(review);
+        rejected.setMessage(secondRejected.getMessage());
+        System.out.println("secondReject Message:"+rejected.getMessage());
         rejected.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(secondRejected.get???()).ifPresent(review->{
-            
-            review // do something
-            repository().save(review);
-
-            Approved approved = new Approved(review);
-            approved.publishAfterCommit();
-            Rejected rejected = new Rejected(review);
-            rejected.publishAfterCommit();
-
-         });
-        */
-
+        System.out.println("rejected publish");
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void receive2ndResult(SecondConfirmed secondConfirmed) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Review review = new Review();
+        System.out.println("receive secondConfirmed:" + secondConfirmed.getAcceptNo());
+        Review review = repository().findById(secondConfirmed.getId()).orElseThrow();
+        review.setStatus("secondConfirmed");
         repository().save(review);
 
         Approved approved = new Approved(review);
         approved.publishAfterCommit();
-        Rejected rejected = new Rejected(review);
-        rejected.publishAfterCommit();
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(secondConfirmed.get???()).ifPresent(review->{
-            
-            review // do something
-            repository().save(review);
-
-            Approved approved = new Approved(review);
-            approved.publishAfterCommit();
-            Rejected rejected = new Rejected(review);
-            rejected.publishAfterCommit();
-
-         });
-        */
-
+        System.out.println("approved publish");
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void receiveFinalResult(JobCompleted jobCompleted) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Review review = new Review();
+        System.out.println("receive FinalResult jobCompleted");
+        Review review = repository().findById(jobCompleted.getId()).orElseThrow();
+        review.setStatus("finalConfirmed");
         repository().save(review);
 
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(jobCompleted.get???()).ifPresent(review->{
-            
-            review // do something
-            repository().save(review);
-
-
-         });
-        */
-
+        Completed completed = new Completed();
+        completed.setAcceptNo(jobCompleted.getAcceptNo());
+        completed.setStatus(jobCompleted.getStatus());
+        completed.setMessage(jobCompleted.getMessage());
+        completed.publishAfterCommit();
+        System.out.println("publish confirmed");
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void receiveFinalResult(JobRejected jobRejected) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Review review = new Review();
+        System.out.println("receive FinalResult jobRejected");
+        Review review = repository().findById(jobRejected.getId()).orElseThrow();
+        review.setStatus("finalRejected");
         repository().save(review);
 
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(jobRejected.get???()).ifPresent(review->{
-            
-            review // do something
-            repository().save(review);
-
-
-         });
-        */
-
+        Rejected rejected = new Rejected();
+        rejected.setAcceptNo(jobRejected.getAcceptNo());
+        rejected.setStatus(jobRejected.getStatus());
+        rejected.setMessage(jobRejected.getMessage());
+        rejected.publishAfterCommit();
+        System.out.println("publish reject");
     }
-    //>>> Clean Arch / Port Method
 
 }
-//>>> DDD / Aggregate Root

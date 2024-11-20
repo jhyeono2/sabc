@@ -1,5 +1,6 @@
 package sabc.domain;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -33,15 +34,15 @@ public class Account {
 
     private String goodsName;
 
-    private String price;
+    private BigDecimal price;
 
-    private String qty;
+    private int qty;
 
     private String importCountry;
 
     private String exportCountry;
 
-    private String branchNo;
+    private int branchNo;
 
     public static AccountRepository repository() {
         AccountRepository hostRepository = HostApplication.applicationContext.getBean(
@@ -53,24 +54,39 @@ public class Account {
     //<<< Clean Arch / Port Method
     public static void startAccountJob(Approved approved) {
         //implement business logic here:
-
-        /** Example 1:  new item 
-        Host host = new Host();
-        repository().save(host);
-
-        */
-
-        /** Example 2:  finding and process
+        Account account = new Account();
+        account.setAcceptNo(approved.getAcceptNo());
+        account.setBranchNo(approved.getBranchNo());
+        account.setCustomerId(approved.getCustomerId());
+        account.setCustomerName(approved.getCustomerName());
+        account.setTranType(approved.getTranType());
+        account.setCounterPartyId(approved.getCounterPartyId());
+        account.setCounterPartyName(approved.getCounterPartyName());
+        account.setImportCountry(approved.getImportCountry());
+        account.setExportCountry(approved.getExportCountry());
+        account.setGoodsName(approved.getGoodsName());
+        account.setPrice(approved.getPrice());
+        account.setQty(approved.getQty());
         
-        repository().findById(approved.get???()).ifPresent(host->{
+        if(account.getPrice().compareTo(new BigDecimal("10000")) < 0){
+            account.setStatus("finalConfirmed");
+            repository().save(account);
             
-            host // do something
-            repository().save(host);
+            JobCompleted jobCompleted = new JobCompleted();
+            jobCompleted.setAcceptNo(account.getAcceptNo());
+            jobCompleted.setStatus("confimed");
+            jobCompleted.setResultMessage("confimed");
+            jobCompleted.publishAfterCommit();
+        }else{
+            account.setStatus("finalRejected");
+            repository().save(account);
 
-
-         });
-        */
-
+            JobRejected jobRejected = new JobRejected();
+            jobRejected.setAcceptNo(account.getAcceptNo());
+            jobRejected.setStatus(account.getStatus());
+            jobRejected.setResultMessage("10000불 이상은 거래불가");
+            jobRejected.publishAfterCommit();
+        }
     }
     //>>> Clean Arch / Port Method
 

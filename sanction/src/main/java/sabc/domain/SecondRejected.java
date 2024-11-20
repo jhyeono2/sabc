@@ -14,6 +14,7 @@ public class SecondRejected extends AbstractEvent {
     private Long id;
     private String acceptNo;
     private String status;
+    private String message;
 
     public SecondRejected(Sanction aggregate) {
         super(aggregate);
