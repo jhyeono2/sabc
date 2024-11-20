@@ -46,6 +46,7 @@ public class Accept {
     public static void notify(Completed completed) {
         System.out.println("account notify :" + completed.getAcceptNo() + " status :" + completed.getStatus());
         Accept accept = repository().findById(completed.getId()).orElseThrow();
+        accept.setId(completed.getId());
         accept.setStatus(completed.getStatus());
         repository().save(accept);
     }

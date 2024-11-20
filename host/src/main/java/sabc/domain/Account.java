@@ -55,6 +55,7 @@ public class Account {
     public static void startAccountJob(Approved approved) {
         //implement business logic here:
         Account account = new Account();
+        account.setId(approved.getId());
         account.setAcceptNo(approved.getAcceptNo());
         account.setBranchNo(approved.getBranchNo());
         account.setCustomerId(approved.getCustomerId());
@@ -73,6 +74,7 @@ public class Account {
             repository().save(account);
             
             JobCompleted jobCompleted = new JobCompleted();
+            jobCompleted.setId(account.getId());
             jobCompleted.setAcceptNo(account.getAcceptNo());
             jobCompleted.setStatus("confimed");
             jobCompleted.setResultMessage("confimed");
@@ -82,6 +84,7 @@ public class Account {
             repository().save(account);
 
             JobRejected jobRejected = new JobRejected();
+            jobRejected.setId(account.getId());
             jobRejected.setAcceptNo(account.getAcceptNo());
             jobRejected.setStatus(account.getStatus());
             jobRejected.setResultMessage("10000불 이상은 거래불가");
