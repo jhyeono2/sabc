@@ -60,8 +60,8 @@
                             [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ AcceptNo :  {{data.acceptNo }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ UserId :  {{data.userId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ UserName :  {{data.userName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ CustomerId :  {{data.customerId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ CustomerName :  {{data.customerName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ TranType :  {{data.tranType }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ CounterPartyId :  {{data.counterPartyId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ CounterPartyName :  {{data.counterPartyName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -140,8 +140,8 @@
             this.newValue = {
                 'acceptNo': '',
                 'status': '',
-                'userId': '',
-                'userName': '',
+                'customerId': '',
+                'customerName': '',
                 'tranType': '',
                 'counterPartyId': '',
                 'counterPartyName': '',

@@ -21,8 +21,8 @@
             <String label="ImportCountry" v-model="value.importCountry" :editMode="editMode" :inputUI="''"/>
             <String label="ExportCountry" v-model="value.exportCountry" :editMode="editMode" :inputUI="''"/>
             <String label="CounterPartyName" v-model="value.counterPartyName" :editMode="editMode" :inputUI="''"/>
-            <String label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
-            <String label="UserName" v-model="value.userName" :editMode="editMode" :inputUI="''"/>
+            <String label="CustomerId" v-model="value.customerId" :editMode="editMode" :inputUI="''"/>
+            <String label="CustomerName" v-model="value.customerName" :editMode="editMode" :inputUI="''"/>
             <String label="CounterPartyId" v-model="value.counterPartyId" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 

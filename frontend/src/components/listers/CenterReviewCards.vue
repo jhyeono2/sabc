@@ -105,8 +105,8 @@
             
             me.newValue = {
                 'acceptNo': '',
-                'userId': '',
-                'userName': '',
+                'customerId': '',
+                'customerName': '',
                 'tranType': '',
                 'documentImg': '',
                 'counterPartyId': '',

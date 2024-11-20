@@ -23,9 +23,9 @@ public class Account {
 
     private String status;
 
-    private String userId;
+    private String customerId;
 
-    private String userName;
+    private String customerName;
 
     private String tranType;
 

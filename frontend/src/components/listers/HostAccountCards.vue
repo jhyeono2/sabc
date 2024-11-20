@@ -106,8 +106,8 @@
             me.newValue = {
                 'acceptNo': '',
                 'status': '',
-                'userId': '',
-                'userName': '',
+                'customerId': '',
+                'customerName': '',
                 'tranType': '',
                 'counterPartyId': '',
                 'counterPartyName': '',

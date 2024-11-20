@@ -109,8 +109,8 @@
                 'importCountry': '',
                 'exportCountry': '',
                 'counterPartyName': '',
-                'userId': '',
-                'userName': '',
+                'customerId': '',
+                'customerName': '',
                 'counterPartyId': '',
             }
         },

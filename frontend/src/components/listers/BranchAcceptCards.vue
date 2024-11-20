@@ -104,8 +104,8 @@
             me.values = temp.data._embedded.accepts;
             
             me.newValue = {
-                'userId': '',
-                'userName': '',
+                'customerId': '',
+                'customerName': '',
                 'tranType': '',
                 'documentImg': '',
                 'acceptNo': '',

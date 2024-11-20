@@ -17,9 +17,9 @@ public class Accept {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String userId;
+    private String customerId;
 
-    private String userName;
+    private String customerName;
 
     private String tranType;
 

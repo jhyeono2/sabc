@@ -68,8 +68,8 @@
                 [
                     { text: "id", value: "id" },
                     { text: "acceptNo", value: "acceptNo" },
-                    { text: "userId", value: "userId" },
-                    { text: "userName", value: "userName" },
+                    { text: "customerId", value: "customerId" },
+                    { text: "customerName", value: "customerName" },
                     { text: "tranType", value: "tranType" },
                     { text: "documentImg", value: "documentImg" },
                     { text: "counterPartyId", value: "counterPartyId" },
@@ -100,8 +100,8 @@
 
             this.newValue = {
                 'acceptNo': '',
-                'userId': '',
-                'userName': '',
+                'customerId': '',
+                'customerName': '',
                 'tranType': '',
                 'documentImg': '',
                 'counterPartyId': '',

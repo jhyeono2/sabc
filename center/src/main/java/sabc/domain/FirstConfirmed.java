@@ -13,8 +13,8 @@ public class FirstConfirmed extends AbstractEvent {
 
     private Long id;
     private String acceptNo;
-    private String userId;
-    private String userName;
+    private String customerId;
+    private String customerName;
     private String importCountry;
     private String exportCountry;
     private String counterPartyName;

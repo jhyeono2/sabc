@@ -29,9 +29,9 @@ public class Sanction {
 
     private String counterPartyName;
 
-    private String userId;
+    private String customerId;
 
-    private String userName;
+    private String customerName;
 
     private String counterPartyId;
 

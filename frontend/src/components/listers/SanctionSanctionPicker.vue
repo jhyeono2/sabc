@@ -30,10 +30,10 @@
                                 CounterPartyName :  {{item.counterPartyName }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                UserId :  {{item.userId }}
+                                CustomerId :  {{item.customerId }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                UserName :  {{item.userName }}
+                                CustomerName :  {{item.customerName }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
                                 CounterPartyId :  {{item.counterPartyId }}
