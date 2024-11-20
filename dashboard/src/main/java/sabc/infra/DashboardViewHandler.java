@@ -11,11 +11,11 @@ import sabc.config.kafka.KafkaProcessor;
 import sabc.domain.*;
 
 @Service
-public class StatusViewHandler {
+public class DashboardViewHandler {
 
     //<<< DDD / CQRS
     @Autowired
-    private StatusRepository statusRepository;
+    private DashboardRepository statusRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whenDocumentAccepted_then_CREATE_1(
@@ -25,16 +25,16 @@ public class StatusViewHandler {
             if (!documentAccepted.validate()) return;
 
             // view 객체 생성
-            Status status = new Status();
+            Dashboard dashboard = new Dashboard();
             // view 객체에 이벤트의 Value 를 set 함
-            status.setId(documentAccepted.getId());
-            status.setAcceptNo(documentAccepted.getAcceptNo());
-            status.setStatus(documentAccepted.getStatus());
-            status.setBranchNo(documentAccepted.getBranchNo());
-            status.setCustomerId(documentAccepted.getCustomerId());
-            status.setCustomerName(documentAccepted.getCustomerName());
+            dashboard.setId(documentAccepted.getId());
+            dashboard.setAcceptNo(documentAccepted.getAcceptNo());
+            dashboard.setStatus(documentAccepted.getStatus());
+            dashboard.setBranchNo(documentAccepted.getBranchNo());
+            dashboard.setCustomerId(documentAccepted.getCustomerId());
+            dashboard.setCustomerName(documentAccepted.getCustomerName());
             // view 레파지 토리에 save
-            statusRepository.save(status);
+            statusRepository.save(dashboard);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -46,14 +46,14 @@ public class StatusViewHandler {
             if (!rejected.validate()) return;
             // view 객체 조회
 
-            List<Status> statusList = statusRepository.findByAcceptNo(
+            List<Dashboard> dashboardList = statusRepository.findByAcceptNo(
                 rejected.getAcceptNo()
             );
-            for (Status status : statusList) {
+            for (Dashboard dashboard : dashboardList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                status.setStatus(rejected.getStatus());
+                dashboard.setStatus(rejected.getStatus());
                 // view 레파지 토리에 save
-                statusRepository.save(status);
+                statusRepository.save(dashboard);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,14 +66,14 @@ public class StatusViewHandler {
             if (!approved.validate()) return;
             // view 객체 조회
 
-            List<Status> statusList = statusRepository.findByAcceptNo(
+            List<Dashboard> dashboardList = statusRepository.findByAcceptNo(
                 approved.getAcceptNo()
             );
-            for (Status status : statusList) {
+            for (Dashboard dashboard : dashboardList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                status.setStatus(approved.getStatus());
+                dashboard.setStatus(approved.getStatus());
                 // view 레파지 토리에 save
-                statusRepository.save(status);
+                statusRepository.save(dashboard);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,10 +88,10 @@ public class StatusViewHandler {
             if (!jobCompleted.validate()) return;
             // view 객체 조회
 
-            List<Status> statusList = statusRepository.findByAcceptNo(
+            List<Dashboard> statusList = statusRepository.findByAcceptNo(
                 jobCompleted.getAcceptNo()
             );
-            for (Status status : statusList) {
+            for (Dashboard status : statusList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
                 status.setStatus(jobCompleted.getStatus());
                 // view 레파지 토리에 save
@@ -110,10 +110,10 @@ public class StatusViewHandler {
             if (!jobRejected.validate()) return;
             // view 객체 조회
 
-            List<Status> statusList = statusRepository.findByAcceptNo(
+            List<Dashboard> statusList = statusRepository.findByAcceptNo(
                 jobRejected.getAcceptNo()
             );
-            for (Status status : statusList) {
+            for (Dashboard status : statusList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
                 status.setStatus(jobRejected.getStatus());
                 // view 레파지 토리에 save

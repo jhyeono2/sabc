@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8080
 
 ---
 
@@ -14,27 +14,27 @@ spring:
           predicates:
             - Path=/accepts/**, /undefined/**, 
         - id: center
-          uri: http://localhost:0
+          uri: http://localhost:8083
           predicates:
             - Path=/reviews/**, 
-        - id: sanction
-          uri: http://localhost:0
+        - id: dashboard
+          uri: http://localhost:8084
           predicates:
-            - Path=/sanctions/**, 
+            - Path=/dashboard/**, /undefined/**, 
         - id: host
-          uri: http://localhost:0
+          uri: http://localhost:8085
           predicates:
             - Path=/hosts/**, /undefined/**, 
-        - id: dashboard
-          uri: http://localhost:0
+        - id: sanction
+          uri: http://localhost:8086
           predicates:
-            - Path=/undefined/**, /undefined/**, 
+            - Path=/sanctions/**, 
         - id: swift
-          uri: http://localhost:0
+          uri: http://localhost:8087
           predicates:
             - Path=, 
         - id: frontend
-          uri: http://localhost:8080
+          uri: http://localhost:8088
           predicates:
             - Path=/**
 #>>> API Gateway / Routes
@@ -58,31 +58,31 @@ spring:
     gateway:
       routes:
         - id: branch
-          uri: http://branch:8080
+          uri: http://branch:8082
           predicates:
             - Path=/accepts/**, /undefined/**, 
         - id: center
-          uri: http://center:8080
+          uri: http://center:8083
           predicates:
             - Path=/reviews/**, 
-        - id: sanction
-          uri: http://sanction:8080
+        - id: dashboard
+          uri: http://dashboard:8084
           predicates:
-            - Path=/sanctions/**, 
+            - Path=/dashboard/**, /undefined/**, 
         - id: host
-          uri: http://host:8080
+          uri: http://host:8085
           predicates:
             - Path=/hosts/**, /undefined/**, 
-        - id: dashboard
-          uri: http://dashboard:8080
+        - id: sanction
+          uri: http://sanction:8086
           predicates:
-            - Path=/undefined/**, /undefined/**, 
+            - Path=/sanctions/**, 
         - id: swift
-          uri: http://swift:8080
+          uri: http://swift:8087
           predicates:
-            - Path=, 
+            - Path=/swift/**, 
         - id: frontend
-          uri: http://frontend:8080
+          uri: http://frontend:8088
           predicates:
             - Path=/**
       globalcors:
