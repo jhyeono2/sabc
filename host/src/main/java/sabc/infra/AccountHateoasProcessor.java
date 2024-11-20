@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 import sabc.domain.*;
 
 @Component
-public class HostHateoasProcessor
-    implements RepresentationModelProcessor<EntityModel<Host>> {
+public class AccountHateoasProcessor
+    implements RepresentationModelProcessor<EntityModel<Account>> {
 
     @Override
-    public EntityModel<Host> process(EntityModel<Host> model) {
+    public EntityModel<Account> process(EntityModel<Account> model) {
         return model;
     }
 }

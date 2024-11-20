@@ -15,9 +15,9 @@ import sabc.domain.*;
 @RestController
 // @RequestMapping(value="/hosts")
 @Transactional
-public class HostController {
+public class AccountController {
 
     @Autowired
-    HostRepository hostRepository;
+    AccountRepository hostRepository;
 }
 //>>> Clean Arch / Inbound Adaptor

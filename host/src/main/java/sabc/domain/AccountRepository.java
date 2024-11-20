@@ -6,5 +6,5 @@ import sabc.domain.*;
 
 //<<< PoEAA / Repository
 @RepositoryRestResource(collectionResourceRel = "hosts", path = "hosts")
-public interface HostRepository
-    extends PagingAndSortingRepository<Host, Long> {}
+public interface AccountRepository
+    extends PagingAndSortingRepository<Account, Long> {}

@@ -18,7 +18,7 @@ public class PolicyHandler {
 
     @Autowired
 
-    HostRepository hostRepository;
+    AccountRepository accountRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
@@ -34,7 +34,7 @@ public class PolicyHandler {
         );
 
         // Sample Logic //
-        Host.startAccountJob(event);
+        Account.startAccountJob(event);
     }
 }
 

@@ -11,7 +11,7 @@ import sabc.HostApplication;
 @Table(name = "Host_table")
 @Data
 //<<< DDD / Aggregate Root
-public class Host {
+public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,9 +43,9 @@ public class Host {
 
     private String branchNo;
 
-    public static HostRepository repository() {
-        HostRepository hostRepository = HostApplication.applicationContext.getBean(
-            HostRepository.class
+    public static AccountRepository repository() {
+        AccountRepository hostRepository = HostApplication.applicationContext.getBean(
+            AccountRepository.class
         );
         return hostRepository;
     }
