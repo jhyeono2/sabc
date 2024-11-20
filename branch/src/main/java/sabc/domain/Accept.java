@@ -3,6 +3,7 @@ package sabc.domain;
 import javax.persistence.*;
 import lombok.Data;
 import sabc.BranchApplication;
+import sabc.domain.DocumentAccepted;
 
 @Entity
 @Table(name = "Accept_table")
@@ -28,6 +29,12 @@ public class Accept {
 
     private Integer branchNo;
 
+    @PostPersist
+    public void onPostPersist() {
+        DocumentAccepted documentAccepted = new DocumentAccepted(this);
+        documentAccepted.publishAfterCommit();
+    }
+
     public static AcceptRepository repository() {
         AcceptRepository acceptRepository = BranchApplication.applicationContext.getBean(
             AcceptRepository.class
@@ -36,7 +43,7 @@ public class Accept {
     }
 
     //<<< Clean Arch / Port Method
-    public static void notify(JobCompleted jobCompleted) {
+    public static void notify(Comleted comleted) {
         //implement business logic here:
 
         /** Example 1:  new item 
@@ -47,31 +54,7 @@ public class Accept {
 
         /** Example 2:  finding and process
         
-        repository().findById(jobCompleted.get???()).ifPresent(accept->{
-            
-            accept // do something
-            repository().save(accept);
-
-
-         });
-        */
-
-    }
-
-    //>>> Clean Arch / Port Method
-    //<<< Clean Arch / Port Method
-    public static void notify(JobRejected jobRejected) {
-        //implement business logic here:
-
-        /** Example 1:  new item 
-        Accept accept = new Accept();
-        repository().save(accept);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(jobRejected.get???()).ifPresent(accept->{
+        repository().findById(comleted.get???()).ifPresent(accept->{
             
             accept // do something
             repository().save(accept);

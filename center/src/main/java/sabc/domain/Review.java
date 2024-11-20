@@ -7,9 +7,6 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import sabc.CenterApplication;
-import sabc.domain.Approved;
-import sabc.domain.FirstConfirmed;
-import sabc.domain.Rejected;
 
 @Entity
 @Table(name = "Review_table")
@@ -50,18 +47,6 @@ public class Review {
     private Integer branchNo;
 
     private String status;
-
-    @PostPersist
-    public void onPostPersist() {
-        FirstConfirmed firstConfirmed = new FirstConfirmed(this);
-        firstConfirmed.publishAfterCommit();
-
-        Rejected rejected = new Rejected(this);
-        rejected.publishAfterCommit();
-
-        Approved approved = new Approved(this);
-        approved.publishAfterCommit();
-    }
 
     public static ReviewRepository repository() {
         ReviewRepository reviewRepository = CenterApplication.applicationContext.getBean(
@@ -151,6 +136,54 @@ public class Review {
             approved.publishAfterCommit();
             Rejected rejected = new Rejected(review);
             rejected.publishAfterCommit();
+
+         });
+        */
+
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public static void receiveFinalResult(JobCompleted jobCompleted) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Review review = new Review();
+        repository().save(review);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(jobCompleted.get???()).ifPresent(review->{
+            
+            review // do something
+            repository().save(review);
+
+
+         });
+        */
+
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public static void receiveFinalResult(JobRejected jobRejected) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Review review = new Review();
+        repository().save(review);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(jobRejected.get???()).ifPresent(review->{
+            
+            review // do something
+            repository().save(review);
+
 
          });
         */

@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 import sabc.config.kafka.KafkaProcessor;
 import sabc.domain.*;
 
-//<<< Clean Arch / Inbound Adaptor
 @Service
 @Transactional
 public class PolicyHandler {
 
     @Autowired
-    AccountRepository accountRepository;
-    
+
+    HostRepository hostRepository;
+
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
 
@@ -34,7 +34,7 @@ public class PolicyHandler {
         );
 
         // Sample Logic //
-        Account.startAccountJob(event);
+        Host.startAccountJob(event);
     }
 }
-//>>> Clean Arch / Inbound Adaptor
+

@@ -12,19 +12,19 @@ spring:
         - id: branch
           uri: http://localhost:8082
           predicates:
-            - Path=, 
+            - Path=/accepts/**, /undefined/**, 
         - id: center
-          uri: http://localhost:8083
+          uri: http://localhost:0
           predicates:
             - Path=/reviews/**, 
         - id: sanction
-          uri: http://localhost:8084
+          uri: http://localhost:0
           predicates:
             - Path=/sanctions/**, 
         - id: host
-          uri: http://localhost:8085
+          uri: http://localhost:0
           predicates:
-            - Path=/accounts/**, /undefined/**, 
+            - Path=/hosts/**, /undefined/**, 
         - id: dashboard
           uri: http://localhost:0
           predicates:
@@ -60,7 +60,7 @@ spring:
         - id: branch
           uri: http://branch:8080
           predicates:
-            - Path=, 
+            - Path=/accepts/**, /undefined/**, 
         - id: center
           uri: http://center:8080
           predicates:
@@ -72,7 +72,7 @@ spring:
         - id: host
           uri: http://host:8080
           predicates:
-            - Path=/accounts/**, /undefined/**, 
+            - Path=/hosts/**, /undefined/**, 
         - id: dashboard
           uri: http://dashboard:8080
           predicates:

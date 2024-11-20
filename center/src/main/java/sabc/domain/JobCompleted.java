@@ -1,12 +1,13 @@
 package sabc.domain;
 
-import java.time.LocalDate;
 import java.util.*;
-import lombok.Data;
+import lombok.*;
+import sabc.domain.*;
 import sabc.infra.AbstractEvent;
 
 @Data
-public class JobRejected extends AbstractEvent {
+@ToString
+public class JobCompleted extends AbstractEvent {
 
     private Long id;
     private String acceptNo;
