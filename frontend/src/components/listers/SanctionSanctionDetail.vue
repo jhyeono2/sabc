@@ -18,7 +18,7 @@
                 <String label="ExportCountry" v-model="item.exportCountry" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <String label="CounterpartyName" v-model="item.counterpartyName" :editMode="editMode" @change="change" />
+                <String label="CounterPartyName" v-model="item.counterPartyName" :editMode="editMode" @change="change" />
             </div>
             <div>
                 <String label="UserId" v-model="item.userId" :editMode="editMode" @change="change" />
@@ -27,7 +27,7 @@
                 <String label="UserName" v-model="item.userName" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <String label="CounterpartyId" v-model="item.counterpartyId" :editMode="editMode" @change="change" />
+                <String label="CounterPartyId" v-model="item.counterPartyId" :editMode="editMode" @change="change" />
             </div>
         </v-card-text>
 

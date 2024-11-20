@@ -17,8 +17,6 @@ public class FirstConfirmed extends AbstractEvent {
     private String userName;
     private String importCountry;
     private String exportCountry;
-    private String importCountry;
-    private String exportCountry;
     private String counterPartyName;
     private String counterPartyId;
     private String status;

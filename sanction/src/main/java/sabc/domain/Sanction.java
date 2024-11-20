@@ -27,13 +27,13 @@ public class Sanction {
 
     private String exportCountry;
 
-    private String counterpartyName;
+    private String counterPartyName;
 
     private String userId;
 
     private String userName;
 
-    private String counterpartyId;
+    private String counterPartyId;
 
     @PostPersist
     public void onPostPersist() {

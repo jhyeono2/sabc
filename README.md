@@ -44,7 +44,7 @@ mvn spring-boot:run
 ```
 - sanction
 ```
- http :8088/sanctions id="id" acceptNo="acceptNo" status="status" importCountry="importCountry" exportCountry="exportCountry" counterpartyName="counterpartyName" userId="userId" userName="userName" counterpartyId="counterpartyId" 
+ http :8088/sanctions id="id" acceptNo="acceptNo" status="status" importCountry="importCountry" exportCountry="exportCountry" counterPartyName="counterPartyName" userId="userId" userName="userName" counterPartyId="counterPartyId" 
 ```
 - host
 ```

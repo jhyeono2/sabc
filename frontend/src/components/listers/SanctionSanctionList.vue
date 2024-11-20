@@ -57,10 +57,10 @@
                             [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ ImportCountry :  {{data.importCountry }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ ExportCountry :  {{data.exportCountry }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ CounterpartyName :  {{data.counterpartyName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ CounterPartyName :  {{data.counterPartyName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ UserId :  {{data.userId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ UserName :  {{data.userName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ CounterpartyId :  {{data.counterpartyId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ CounterPartyId :  {{data.counterPartyId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -132,10 +132,10 @@
                 'status': '',
                 'importCountry': '',
                 'exportCountry': '',
-                'counterpartyName': '',
+                'counterPartyName': '',
                 'userId': '',
                 'userName': '',
-                'counterpartyId': '',
+                'counterPartyId': '',
             }
         },
         methods: {
