@@ -29,10 +29,10 @@ public class StatusViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             status.setId(documentAccepted.getId());
             status.setAcceptNo(documentAccepted.getAcceptNo());
-            status.setUserId(documentAccepted.getUserId());
-            status.setUserName(documentAccepted.getUserName());
             status.setStatus(documentAccepted.getStatus());
             status.setBranchNo(documentAccepted.getBranchNo());
+            status.setCustomerId(documentAccepted.getCustomerId());
+            status.setCustomerName(documentAccepted.getCustomerName());
             // view 레파지 토리에 save
             statusRepository.save(status);
         } catch (Exception e) {

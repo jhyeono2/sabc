@@ -23,8 +23,8 @@
             headers: [
                 { text: "id", value: "id" },
                 { text: "acceptNo", value: "acceptNo" },
-                { text: "userId", value: "userId" },
-                { text: "userName", value: "userName" },
+                { text: "customerId", value: "customerId" },
+                { text: "customerName", value: "customerName" },
                 { text: "status", value: "status" },
                 { text: "branchNo", value: "branchNo" },
             ],

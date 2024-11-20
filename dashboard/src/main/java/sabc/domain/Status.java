@@ -17,8 +17,8 @@ public class Status {
     private Long id;
 
     private String acceptNo;
-    private String userId;
-    private String userName;
+    private String customerId;
+    private String customerName;
     private String status;
     private Integer branchNo;
 }

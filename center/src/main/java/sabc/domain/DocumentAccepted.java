@@ -10,8 +10,8 @@ import sabc.infra.AbstractEvent;
 public class DocumentAccepted extends AbstractEvent {
 
     private Long id;
-    private String userId;
-    private String userName;
+    private String customerId;
+    private String customerName;
     private String tranType;
     private String documentImg;
     private String acceptNo;

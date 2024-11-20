@@ -40,15 +40,15 @@ mvn spring-boot:run
 ```
 - center
 ```
- http :8088/reviews id="id" acceptNo="acceptNo" userId="userId" userName="userName" tranType="tranType" documentImg="documentImg" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" tradeDate="tradeDate" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" status="status" 
+ http :8088/reviews id="id" acceptNo="acceptNo" customerId="customerId" customerName="customerName" tranType="tranType" documentImg="documentImg" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" tradeDate="tradeDate" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" status="status" 
 ```
 - sanction
 ```
- http :8088/sanctions id="id" acceptNo="acceptNo" status="status" importCountry="importCountry" exportCountry="exportCountry" counterPartyName="counterPartyName" userId="userId" userName="userName" counterPartyId="counterPartyId" 
+ http :8088/sanctions id="id" acceptNo="acceptNo" status="status" importCountry="importCountry" exportCountry="exportCountry" counterPartyName="counterPartyName" customerId="customerId" customerName="customerName" counterPartyId="counterPartyId" 
 ```
 - host
 ```
- http :8088/accounts id="id" acceptNo="acceptNo" status="status" userId="userId" userName="userName" tranType="tranType" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" 
+ http :8088/accounts id="id" acceptNo="acceptNo" status="status" customerId="customerId" customerName="customerName" tranType="tranType" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" 
  http :8088/ 
 ```
 - dashboard

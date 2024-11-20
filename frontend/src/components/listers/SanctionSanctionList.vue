@@ -58,8 +58,8 @@
                             [ ImportCountry :  {{data.importCountry }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ ExportCountry :  {{data.exportCountry }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ CounterPartyName :  {{data.counterPartyName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ UserId :  {{data.userId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ UserName :  {{data.userName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ CustomerId :  {{data.customerId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ CustomerName :  {{data.customerName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ CounterPartyId :  {{data.counterPartyId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
@@ -133,8 +133,8 @@
                 'importCountry': '',
                 'exportCountry': '',
                 'counterPartyName': '',
-                'userId': '',
-                'userName': '',
+                'customerId': '',
+                'customerName': '',
                 'counterPartyId': '',
             }
         },

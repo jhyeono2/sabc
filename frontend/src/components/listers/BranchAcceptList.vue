@@ -52,8 +52,8 @@
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
                             [ Id :  {{data.id }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ UserId :  {{data.userId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ UserName :  {{data.userName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ CustomerId :  {{data.customerId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ CustomerName :  {{data.customerName }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ TranType :  {{data.tranType }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ DocumentImg :  {{data.documentImg }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ AcceptNo :  {{data.acceptNo }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -126,8 +126,8 @@
             this.values = temp.data._embedded.accepts;
             
             this.newValue = {
-                'userId': '',
-                'userName': '',
+                'customerId': '',
+                'customerName': '',
                 'tranType': '',
                 'documentImg': '',
                 'acceptNo': '',

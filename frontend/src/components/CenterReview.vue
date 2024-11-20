@@ -17,8 +17,8 @@
 
         <v-card-text style="background-color: white;">
             <String label="AcceptNo" v-model="value.acceptNo" :editMode="editMode" :inputUI="''"/>
-            <String label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
-            <String label="UserName" v-model="value.userName" :editMode="editMode" :inputUI="''"/>
+            <String label="CustomerId" v-model="value.customerId" :editMode="editMode" :inputUI="''"/>
+            <String label="CustomerName" v-model="value.customerName" :editMode="editMode" :inputUI="''"/>
             <String label="TranType" v-model="value.tranType" :editMode="editMode" :inputUI="''"/>
             <String label="DocumentImg" v-model="value.documentImg" :editMode="editMode" :inputUI="''"/>
             <String label="CounterPartyId" v-model="value.counterPartyId" :editMode="editMode" :inputUI="''"/>

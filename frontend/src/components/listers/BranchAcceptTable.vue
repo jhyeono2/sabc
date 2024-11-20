@@ -67,8 +67,8 @@
             headers: 
                 [
                     { text: "id", value: "id" },
-                    { text: "userId", value: "userId" },
-                    { text: "userName", value: "userName" },
+                    { text: "customerId", value: "customerId" },
+                    { text: "customerName", value: "customerName" },
                     { text: "tranType", value: "tranType" },
                     { text: "documentImg", value: "documentImg" },
                     { text: "acceptNo", value: "acceptNo" },
@@ -91,8 +91,8 @@
             this.values = temp.data._embedded.accepts;
 
             this.newValue = {
-                'userId': '',
-                'userName': '',
+                'customerId': '',
+                'customerName': '',
                 'tranType': '',
                 'documentImg': '',
                 'acceptNo': '',
