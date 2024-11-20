@@ -37,6 +37,8 @@ mvn spring-boot:run
 ## Test by API
 - branch
 ```
+ http :8088/accepts id="id" customerId="customerId" customerName="customerName" tranType="tranType" documentImg="documentImg" acceptNo="acceptNo" status="status" branchNo="branchNo" 
+ http :8088/ 
 ```
 - center
 ```
@@ -48,7 +50,7 @@ mvn spring-boot:run
 ```
 - host
 ```
- http :8088/accounts id="id" acceptNo="acceptNo" status="status" customerId="customerId" customerName="customerName" tranType="tranType" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" 
+ http :8088/hosts id="id" acceptNo="acceptNo" status="status" customerId="customerId" customerName="customerName" tranType="tranType" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" 
  http :8088/ 
 ```
 - dashboard

@@ -18,7 +18,7 @@ import sabc.domain.*;
 public class PolicyHandler {
 
     @Autowired
-    AccountRepository accountRepository;
+    HostRepository hostRepository;
 
     @Autowired
     Repository Repository;
@@ -37,7 +37,7 @@ public class PolicyHandler {
         );
 
         // Sample Logic //
-        Account.startAccountJob(event);
+        Host.startAccountJob(event);
     }
 }
 //>>> Clean Arch / Inbound Adaptor

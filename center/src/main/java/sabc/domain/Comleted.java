@@ -9,18 +9,17 @@ import sabc.infra.AbstractEvent;
 //<<< DDD / Domain Event
 @Data
 @ToString
-public class JobRejected extends AbstractEvent {
+public class Comleted extends AbstractEvent {
 
     private Long id;
     private String acceptNo;
     private String status;
-    private String resultMessage;
 
-    public JobRejected(Host aggregate) {
+    public Comleted(Review aggregate) {
         super(aggregate);
     }
 
-    public JobRejected() {
+    public Comleted() {
         super();
     }
 }

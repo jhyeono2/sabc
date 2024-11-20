@@ -34,6 +34,28 @@
 
             <v-navigation-drawer app clipped flat v-model="sideBar">
                 <v-list>
+                    <v-list-item
+                        class="px-2"
+                        key="accepts"
+                        to="/branches/accepts"
+                        @click="changeUrl()"
+                        color="primary"
+                        style="font-weight:700;"
+                    >
+                        Accept
+                    </v-list-item>
+
+                    <v-list-item
+                        class="px-2"
+                        key=""
+                        to="//"
+                        @click="changeUrl()"
+                        color="primary"
+                        style="font-weight:700;"
+                    >
+                        
+                    </v-list-item>
+
 
                     <v-list-item
                         class="px-2"
@@ -61,13 +83,13 @@
 
                     <v-list-item
                         class="px-2"
-                        key="accounts"
-                        to="/hosts/accounts"
+                        key="hosts"
+                        to="/hosts/hosts"
                         @click="changeUrl()"
                         color="primary"
                         style="font-weight:700;"
                     >
-                        Account
+                        Host
                     </v-list-item>
 
                     <v-list-item
@@ -185,6 +207,20 @@ export default {
         ImageUrl: '',
         aggregate: [
             { 
+                title: 'Accept', 
+                description: '', 
+                key: 'accepts', 
+                route: '/branches/accepts',
+                ImageUrl: '',
+            },
+            { 
+                title: '', 
+                description: '', 
+                key: '', 
+                route: '//',
+                ImageUrl: '',
+            },
+            { 
                 title: 'Review', 
                 description: '', 
                 key: 'reviews', 
@@ -199,10 +235,10 @@ export default {
                 ImageUrl: '',
             },
             { 
-                title: 'Account', 
+                title: 'Host', 
                 description: '', 
-                key: 'accounts', 
-                route: '/hosts/accounts',
+                key: 'hosts', 
+                route: '/hosts/hosts',
                 ImageUrl: '',
             },
             { 

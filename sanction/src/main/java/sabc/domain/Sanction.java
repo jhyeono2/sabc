@@ -6,8 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import sabc.SanctionApplication;
-import sabc.domain.SecondConfirmed;
-import sabc.domain.SecondRejected;
 
 @Entity
 @Table(name = "Sanction_table")
@@ -34,15 +32,6 @@ public class Sanction {
     private String customerName;
 
     private String counterPartyId;
-
-    @PostPersist
-    public void onPostPersist() {
-        SecondConfirmed secondConfirmed = new SecondConfirmed(this);
-        secondConfirmed.publishAfterCommit();
-
-        SecondRejected secondRejected = new SecondRejected(this);
-        secondRejected.publishAfterCommit();
-    }
 
     public static SanctionRepository repository() {
         SanctionRepository sanctionRepository = SanctionApplication.applicationContext.getBean(

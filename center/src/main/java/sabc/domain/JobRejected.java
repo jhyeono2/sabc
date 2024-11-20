@@ -1,16 +1,16 @@
 package sabc.domain;
 
+import java.util.*;
+import lombok.*;
 import sabc.domain.*;
 import sabc.infra.AbstractEvent;
-import lombok.*;
-import java.util.*;
+
 @Data
 @ToString
-public class 2ndConfirmed extends AbstractEvent {
+public class JobRejected extends AbstractEvent {
 
     private Long id;
     private String acceptNo;
     private String status;
+    private String resultMessage;
 }
-
-

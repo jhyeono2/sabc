@@ -17,34 +17,22 @@ import sabc.domain.*;
 @Transactional
 public class PolicyHandler {
 
+    @Autowired
+    AcceptRepository acceptRepository;
+
+    @Autowired
+    Repository Repository;
+
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='JobCompleted'"
+        condition = "headers['type']=='Comleted'"
     )
-    public void wheneverJobCompleted_Notify(
-        @Payload JobCompleted jobCompleted
-    ) {
-        JobCompleted event = jobCompleted;
-        System.out.println(
-            "\n\n##### listener Notify : " + jobCompleted + "\n\n"
-        );
-
-        // Sample Logic //
-        Accept.notify(event);
-    }
-
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='JobRejected'"
-    )
-    public void wheneverJobRejected_Notify(@Payload JobRejected jobRejected) {
-        JobRejected event = jobRejected;
-        System.out.println(
-            "\n\n##### listener Notify : " + jobRejected + "\n\n"
-        );
+    public void wheneverComleted_Notify(@Payload Comleted comleted) {
+        Comleted event = comleted;
+        System.out.println("\n\n##### listener Notify : " + comleted + "\n\n");
 
         // Sample Logic //
         Accept.notify(event);

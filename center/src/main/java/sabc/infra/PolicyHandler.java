@@ -70,5 +70,37 @@ public class PolicyHandler {
         // Sample Logic //
         Review.receive2ndResult(event);
     }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='JobCompleted'"
+    )
+    public void wheneverJobCompleted_ReceiveFinalResult(
+        @Payload JobCompleted jobCompleted
+    ) {
+        JobCompleted event = jobCompleted;
+        System.out.println(
+            "\n\n##### listener ReceiveFinalResult : " + jobCompleted + "\n\n"
+        );
+
+        // Sample Logic //
+        Review.receiveFinalResult(event);
+    }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='JobRejected'"
+    )
+    public void wheneverJobRejected_ReceiveFinalResult(
+        @Payload JobRejected jobRejected
+    ) {
+        JobRejected event = jobRejected;
+        System.out.println(
+            "\n\n##### listener ReceiveFinalResult : " + jobRejected + "\n\n"
+        );
+
+        // Sample Logic //
+        Review.receiveFinalResult(event);
+    }
 }
 //>>> Clean Arch / Inbound Adaptor
