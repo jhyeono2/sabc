@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: center
-          image: "user15.azurecr.io/center:v1"
+          image: "user15.azurecr.io/center:v7"
           ports:
             - containerPort: 8083
           readinessProbe:
