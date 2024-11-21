@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: branch
+  labels:
+    app: branch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: branch
+  template:
+    metadata:
+      labels:
+        app: branch
+    spec:
+      containers:
+        - name: branch
+          image: "user15.azurecr.io/branch:v13"
+          ports:
+            - containerPort: 8082
+          resources:
+            requests:
+              cpu: "200m"  
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8082
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8082
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
