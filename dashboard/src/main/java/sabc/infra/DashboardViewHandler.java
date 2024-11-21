@@ -15,7 +15,7 @@ public class DashboardViewHandler {
 
     //<<< DDD / CQRS
     @Autowired
-    private DashboardRepository statusRepository;
+    private DashboardRepository dashboardRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whenDocumentAccepted_then_CREATE_1(
@@ -35,7 +35,7 @@ public class DashboardViewHandler {
             dashboard.setCustomerId(documentAccepted.getCustomerId());
             dashboard.setCustomerName(documentAccepted.getCustomerName());
             // view 레파지 토리에 save
-            statusRepository.save(dashboard);
+            dashboardRepository.save(dashboard);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -47,14 +47,14 @@ public class DashboardViewHandler {
             if (!rejected.validate()) return;
             // view 객체 조회
 
-            List<Dashboard> dashboardList = statusRepository.findByAcceptNo(
+            List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
                 rejected.getAcceptNo()
             );
             for (Dashboard dashboard : dashboardList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
                 dashboard.setStatus(rejected.getStatus());
                 // view 레파지 토리에 save
-                statusRepository.save(dashboard);
+                dashboardRepository.save(dashboard);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,14 +67,14 @@ public class DashboardViewHandler {
             if (!approved.validate()) return;
             // view 객체 조회
 
-            List<Dashboard> dashboardList = statusRepository.findByAcceptNo(
+            List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
                 approved.getAcceptNo()
             );
             for (Dashboard dashboard : dashboardList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
                 dashboard.setStatus(approved.getStatus());
                 // view 레파지 토리에 save
-                statusRepository.save(dashboard);
+                dashboardRepository.save(dashboard);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,14 +89,14 @@ public class DashboardViewHandler {
             if (!jobCompleted.validate()) return;
             // view 객체 조회
 
-            List<Dashboard> statusList = statusRepository.findByAcceptNo(
+            List<Dashboard> statusList = dashboardRepository.findByAcceptNo(
                 jobCompleted.getAcceptNo()
             );
             for (Dashboard status : statusList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
                 status.setStatus(jobCompleted.getStatus());
                 // view 레파지 토리에 save
-                statusRepository.save(status);
+                dashboardRepository.save(status);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -111,14 +111,14 @@ public class DashboardViewHandler {
             if (!jobRejected.validate()) return;
             // view 객체 조회
 
-            List<Dashboard> statusList = statusRepository.findByAcceptNo(
+            List<Dashboard> statusList = dashboardRepository.findByAcceptNo(
                 jobRejected.getAcceptNo()
             );
             for (Dashboard status : statusList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
                 status.setStatus(jobRejected.getStatus());
                 // view 레파지 토리에 save
-                statusRepository.save(status);
+                dashboardRepository.save(status);
             }
         } catch (Exception e) {
             e.printStackTrace();
