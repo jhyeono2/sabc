@@ -1,60 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dashboard
+  name: center
   labels:
-    app: dashboard
+    app: center
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dashboard
+      app: center
   template:
     metadata:
       labels:
-        app: dashboard
+        app: center
     spec:
       containers:
-        - name: dashboard
-          image: "user15.azurecr.io/dashboard:v36"
+        - name: center
+          image: "user15.azurecr.io/center:v4"
           ports:
-            - containerPort: 8084
+            - containerPort: 8083
           readinessProbe:
             httpGet:
               path: '/actuator/health'
-              port: 8084
-            initialDelaySeconds: 20
+              port: 8083
+            initialDelaySeconds: 10
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 10
           livenessProbe:
             httpGet:
               path: '/actuator/health'
-              port: 8084
+              port: 8083
             initialDelaySeconds: 120
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 5
-          env:
-            - name: superuser.userId
-              value: userId
-            - name: _DATASOURCE_ADDRESS
-              value: mysql
-            - name: _DATASOURCE_TABLESPACE
-              value: dashboard
-            - name: _DATASOURCE_USERNAME
-              value: root
-            - name: _DATASOURCE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-pass
-                  key: password
-
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mysql-pass
-type: Opaque
-data:
-  password: YWRtaW4=
