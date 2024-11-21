@@ -106,7 +106,7 @@ pipeline {
                                 echo 22
                                 cat repo/kubernetes/deployment.yaml
                                 echo 33
-                                cp kubernetes/deployment.yaml repo/kubernetes/deployment.yaml
+                                cp kubernetes/deployment.yaml repo/${IMAGE_NAME}/kubernetes/deployment.yaml
                                 cd repo
                                 git add kubernetes/deployment.yaml
                                 git commit -m "Update deployment.yaml with build ${env.BUILD_NUMBER}"
