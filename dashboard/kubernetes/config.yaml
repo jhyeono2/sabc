@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-dev
+  namespace: default
+data:
+  DASHBOARD_DB_URL: jdbc:mysql://mysql:3306/connectdb1?serverTimezone=Asia/Seoul&useSSL=false
+  DASHBOARD_DB_USER: myuser
+  DASHBOARD_DB_PASS: mypass
+  DASHBOARD_LOG_LEVEL: INFO

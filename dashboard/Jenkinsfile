@@ -1,0 +1,134 @@
+pipeline {
+    agent any
+
+    environment {
+        REGISTRY = 'user15.azurecr.io'
+        IMAGE_NAME = 'dashboard'
+        AKS_CLUSTER = 'user15-aks'
+        RESOURCE_GROUP = 'user15-rsrcgrp'
+        AKS_NAMESPACE = 'default'
+        AZURE_CREDENTIALS_ID = 'Azure-Cred'
+        TENANT_ID = '29d166ad-94ec-45cb-9f65-561c038e1c7a' // Service Principal 등록 후 생성된 ID
+        GIT_USER_NAME = 'jhyeono2'
+        GIT_USER_EMAIL = 'j.hyeono2@gmail.com'
+        GITHUB_CREDENTIALS_ID = 'github'
+        GITHUB_REPO = 'github.com/jhyeono2/sabc.git'
+        GITHUB_BRANCH = 'main' // 업로드할 브랜치
+    }
+
+    tools {
+        maven 'Maven'  // Global Tool Configuration에서 등록한 Maven 이름
+    }
+ 
+    stages {
+        stage('Clone Repository') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Maven Build') {
+            steps {
+                dir('branch') {
+                    sh 'mvn package -DskipTests'
+                }
+            }
+        }
+        
+        stage('Docker Build') {
+            steps {
+                dir('branch') {
+                    script {
+                        image = docker.build("${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_NUMBER}")
+                    }
+                }
+            }
+        }
+        
+        stage('Azure Login') {
+            steps {
+                dir('branch') {
+                    script {
+                        withCredentials([usernamePassword(credentialsId: env.AZURE_CREDENTIALS_ID, usernameVariable: 'AZURE_CLIENT_ID', passwordVariable: 'AZURE_CLIENT_SECRET')]) {
+                            sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant ${TENANT_ID}'
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage('Push to ACR') {
+            steps {
+                dir('branch') {
+                    script {
+                        sh "az acr login --name ${REGISTRY.split('\\.')[0]}"
+                        sh "docker push ${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_NUMBER}"
+                    }
+                }
+            }
+        }
+        
+        stage('CleanUp Images') {
+            steps {
+                dir('branch') {
+                        sh """
+                        docker rmi ${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_NUMBER}
+                        """
+                }
+            }
+        }
+
+        stage('Update deploy.yaml') {
+            steps {
+                dir('branch') {
+                    script {
+                        sh """
+                        sed -i 's|image: \"${REGISTRY}/${IMAGE_NAME}:.*\"|image: \"${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_ID}\"|' kubernetes/deployment.yaml
+                        cat kubernetes/deployment.yaml
+                        """
+                    }
+                }
+            }
+        }
+        
+        stage('Commit and Push to GitHub') {
+            steps {
+                dir('branch') {
+                    script {
+                        withCredentials([usernamePassword(credentialsId: GITHUB_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                            sh """
+                                git config --global user.email "your-email@example.com"
+                                git config --global user.name "Jenkins CI"
+                                git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@${GITHUB_REPO} repo
+                                cp kubernetes/deployment.yaml repo/kubernetes/deployment.yaml
+                                cd repo
+                                git add kubernetes/deployment.yaml
+                                git commit -m "Update deployment.yaml with build ${env.BUILD_NUMBER}"
+                                git push origin ${GITHUB_BRANCH}
+                                cd ..
+                                rm -rf repo
+                            """
+                        }
+                    }
+                }
+            }
+        } 
+        
+        // stage('Deploy to AKS') {
+        //     steps {
+        //         dir('branch') {
+        //             script {
+        //                 sh "az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER}"
+        //                 sh """
+        //                 sed 's/latest/v${env.BUILD_ID}/g' kubernetes/deployment.yaml > output.yaml
+        //                 cat output.yaml
+        //                 kubectl apply -f output.yaml
+        //                 kubectl apply -f kubernetes/service.yaml
+        //                 rm output.yaml
+        //                 """
+        //             }
+        //         }
+        //     }
+        // }
+    }
+}
