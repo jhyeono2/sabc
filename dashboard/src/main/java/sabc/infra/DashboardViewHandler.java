@@ -22,7 +22,7 @@ public class DashboardViewHandler {
         @Payload DocumentAccepted documentAccepted
     ) {
         try {
-            System.out.println("##############whenDocumentAccepted_then_CREATE_1");
+            System.out.println("##############whenDocumentAccepted_then_CREATE_11111");
             if (!documentAccepted.validate()) return;
 
             // view 객체 생성
