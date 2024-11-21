@@ -62,6 +62,7 @@ spring:
   jpa:
     properties:
       hibernate:
+        ddl-auto: update
         show_sql: true
         format_sql: true
         implicit_naming_strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
