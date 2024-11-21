@@ -19,11 +19,6 @@ spring:
         show_sql: true
         format_sql: true
         implicit_naming_strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
-  datasource:
-    # url: jdbc:mysql://${_DATASOURCE_ADDRESS:35.221.110.118:3306}/${_DATASOURCE_TABLESPACE:my-database}
-    # username: ${_DATASOURCE_USERNAME:root1}
-    # password: ${_DATASOURCE_PASSWORD:secretpassword}
-    # driverClassName: com.mysql.cj.jdbc.Driver
   cloud:
     stream:
       kafka:
