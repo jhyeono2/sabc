@@ -126,6 +126,72 @@ public class DashboardViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
+    public void whenFirstConfirmed_then_UPDATE_5(
+        @Payload FirstConfirmed firstConfirmed
+    ) {
+        try {
+            if (!firstConfirmed.validate()) return;
+            // view 객체 조회
+
+            List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
+                firstConfirmed.getAcceptNo()
+            );
+            for (Dashboard dashboard : dashboardList) {
+                // view 객체에 이벤트의 eventDirectValue 를 set 함
+                dashboard.setStatus(firstConfirmed.getStatus());
+                // view 레파지 토리에 save
+                dashboardRepository.save(dashboard);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenSecondConfirmed_then_UPDATE_6(
+        @Payload SecondConfirmed secondConfirmed
+    ) {
+        try {
+            if (!secondConfirmed.validate()) return;
+            // view 객체 조회
+
+            List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
+                secondConfirmed.getAcceptNo()
+            );
+            for (Dashboard dashboard : dashboardList) {
+                // view 객체에 이벤트의 eventDirectValue 를 set 함
+                dashboard.setStatus(secondConfirmed.getStatus());
+                // view 레파지 토리에 save
+                dashboardRepository.save(dashboard);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenSecondRejected_then_UPDATE_7(
+        @Payload SecondRejected secondRejected
+    ) {
+        try {
+            if (!secondRejected.validate()) return;
+            // view 객체 조회
+
+            List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
+                secondRejected.getAcceptNo()
+            );
+            for (Dashboard dashboard : dashboardList) {
+                // view 객체에 이벤트의 eventDirectValue 를 set 함
+                dashboard.setStatus(secondRejected.getStatus());
+                // view 레파지 토리에 save
+                dashboardRepository.save(dashboard);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
     public void whenRejected_then_DELETE_1(@Payload Rejected rejected) {
         try {
             if (!rejected.validate()) return;
