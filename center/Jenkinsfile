@@ -101,6 +101,11 @@ pipeline {
                                 git config --global user.email "your-email@example.com"
                                 git config --global user.name "Jenkins CI"
                                 git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@${GITHUB_REPO} repo
+                                echo 11
+                                cat kubernetes/deployment.yaml
+                                echo 22
+                                cat repo/kubernetes/deployment.yaml
+                                echo 33
                                 cp kubernetes/deployment.yaml repo/kubernetes/deployment.yaml
                                 cd repo
                                 git add kubernetes/deployment.yaml
