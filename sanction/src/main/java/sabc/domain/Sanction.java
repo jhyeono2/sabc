@@ -58,6 +58,7 @@ public class Sanction {
         System.out.println("sanction save:"+sanction.toString());
         
         if("KIMJEONGEUN".equals(sanction.getCounterPartyName())){
+            System.out.println("secondRejected");
             sanction.setStatus("secondRejected");
             repository().save(sanction);
             SecondRejected secondRejected = new SecondRejected();
@@ -68,6 +69,7 @@ public class Sanction {
             secondRejected.publishAfterCommit();
             System.out.println("secondReject publish");
         }else{
+            System.out.println("secondConfirmed");
             sanction.setStatus("secondConfirmed");
             repository().save(sanction);
             SecondConfirmed secondConfirmed = new SecondConfirmed();
