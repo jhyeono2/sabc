@@ -69,7 +69,7 @@ public class Sanction {
             secondRejected.publishAfterCommit();
             System.out.println("secondReject publish");
         }else{
-            System.out.println("secondConfirmed");
+            System.out.println("###########secondConfirmed");
             sanction.setStatus("secondConfirmed");
             repository().save(sanction);
             SecondConfirmed secondConfirmed = new SecondConfirmed();
