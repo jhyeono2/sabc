@@ -19,6 +19,7 @@ public class AcceptController {
     @GetMapping("/actuator/health")
     public String health() {
         // 의도적으로 500 오류 반환
+        System.out.println("#########error");
         throw new RuntimeException("Intentional failure for livenessProbe test");
     }
 }
