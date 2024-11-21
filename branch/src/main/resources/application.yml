@@ -81,9 +81,3 @@ spring:
         event-out:
           destination: sabc
           contentType: application/json
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health
