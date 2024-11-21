@@ -15,7 +15,7 @@ public class BranchApplication {
     public static ApplicationContext applicationContext;
 
     public static void main(String[] args) throws Exception{
-        Thread.sleep(100000);
+        // Thread.sleep(100000);
         applicationContext =
             SpringApplication.run(BranchApplication.class, args);
     }
