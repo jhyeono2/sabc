@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: branch
-          image: "user15.azurecr.io/branch:v13"
+          image: "user15.azurecr.io/branch:v1"
           ports:
             - containerPort: 8082
           resources:
