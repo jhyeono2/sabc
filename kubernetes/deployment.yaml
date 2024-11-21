@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: sanction
-          image: "user15.azurecr.io/sanction:v2"
+          image: "user15.azurecr.io/sanction:v3"
           ports:
             - containerPort: 8086
           readinessProbe:
