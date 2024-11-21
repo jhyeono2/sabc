@@ -12,4 +12,5 @@ public class SecondConfirmed extends AbstractEvent {
     private Long id;
     private String acceptNo;
     private String status;
+    private String message;
 }

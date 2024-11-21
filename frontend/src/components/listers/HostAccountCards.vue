@@ -117,6 +117,7 @@
                 'importCountry': '',
                 'exportCountry': '',
                 'branchNo': '',
+                'message': '',
             }
         },
         methods:{

@@ -18,4 +18,5 @@ public class FirstConfirmed extends AbstractEvent {
     private String counterPartyName;
     private String counterPartyId;
     private String status;
+    private String message;
 }

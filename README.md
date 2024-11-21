@@ -38,11 +38,10 @@ mvn spring-boot:run
 - branch
 ```
  http :8088/accepts id="id" customerId="customerId" customerName="customerName" tranType="tranType" documentImg="documentImg" acceptNo="acceptNo" status="status" branchNo="branchNo" 
- http :8088/ 
 ```
 - center
 ```
- http :8088/reviews id="id" acceptNo="acceptNo" customerId="customerId" customerName="customerName" tranType="tranType" documentImg="documentImg" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" tradeDate="tradeDate" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" status="status" 
+ http :8088/reviews id="id" acceptNo="acceptNo" customerId="customerId" customerName="customerName" tranType="tranType" documentImg="documentImg" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" tradeDate="tradeDate" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" status="status" message="message" 
 ```
 - sanction
 ```
@@ -50,13 +49,10 @@ mvn spring-boot:run
 ```
 - host
 ```
- http :8088/accounts id="id" acceptNo="acceptNo" status="status" customerId="customerId" customerName="customerName" tranType="tranType" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" 
- http :8088/ 
+ http :8088/accounts id="id" acceptNo="acceptNo" status="status" customerId="customerId" customerName="customerName" tranType="tranType" counterPartyId="counterPartyId" counterPartyName="counterPartyName" goodsName="goodsName" price="price" qty="qty" importCountry="importCountry" exportCountry="exportCountry" branchNo="branchNo" message="message" 
 ```
 - dashboard
 ```
- http :8088/ 
- http :8088/ 
 ```
 - swift
 ```

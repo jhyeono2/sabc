@@ -54,6 +54,7 @@
                             
                             
                             
+                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
@@ -71,6 +72,7 @@
                             [ ImportCountry :  {{data.importCountry }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ ExportCountry :  {{data.exportCountry }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ BranchNo :  {{data.branchNo }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Message :  {{data.message }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -151,6 +153,7 @@
                 'importCountry': '',
                 'exportCountry': '',
                 'branchNo': '',
+                'message': '',
             }
         },
         methods: {

@@ -82,6 +82,7 @@
                     { text: "exportCountry", value: "exportCountry" },
                     { text: "branchNo", value: "branchNo" },
                     { text: "status", value: "status" },
+                    { text: "message", value: "message" },
                 ],
             review : [],
             newValue: {},
@@ -109,11 +110,12 @@
                 'goodsName': '',
                 'price': '',
                 'qty': 0,
-                'tradeDate': '2024-11-20',
+                'tradeDate': '2024-11-21',
                 'importCountry': '',
                 'exportCountry': '',
                 'branchNo': 0,
                 'status': '',
+                'message': '',
             }
         },
         methods: {

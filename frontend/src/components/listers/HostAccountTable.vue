@@ -80,6 +80,7 @@
                     { text: "importCountry", value: "importCountry" },
                     { text: "exportCountry", value: "exportCountry" },
                     { text: "branchNo", value: "branchNo" },
+                    { text: "message", value: "message" },
                 ],
             account : [],
             newValue: {},
@@ -110,6 +111,7 @@
                 'importCountry': '',
                 'exportCountry': '',
                 'branchNo': '',
+                'message': '',
             }
         },
         methods: {

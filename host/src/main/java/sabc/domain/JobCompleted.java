@@ -14,7 +14,7 @@ public class JobCompleted extends AbstractEvent {
     private Long id;
     private String acceptNo;
     private String status;
-    private String resultMessage;
+    private String message;
 
     public JobCompleted(Account aggregate) {
         super(aggregate);

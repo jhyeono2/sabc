@@ -17,12 +17,6 @@ import sabc.domain.*;
 @Transactional
 public class PolicyHandler {
 
-    @Autowired
-    Repository Repository;
-
-    @Autowired
-    Repository Repository;
-
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
 }

@@ -45,17 +45,6 @@
                         Accept
                     </v-list-item>
 
-                    <v-list-item
-                        class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
-
 
                     <v-list-item
                         class="px-2"
@@ -92,39 +81,6 @@
                         Account
                     </v-list-item>
 
-                    <v-list-item
-                        class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
-
-
-                    <v-list-item
-                        class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
-
-                    <v-list-item
-                        class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
 
 
 
@@ -214,13 +170,6 @@ export default {
                 ImageUrl: '',
             },
             { 
-                title: '', 
-                description: '', 
-                key: '', 
-                route: '//',
-                ImageUrl: '',
-            },
-            { 
                 title: 'Review', 
                 description: '', 
                 key: 'reviews', 
@@ -239,27 +188,6 @@ export default {
                 description: '', 
                 key: 'accounts', 
                 route: '/hosts/accounts',
-                ImageUrl: '',
-            },
-            { 
-                title: '', 
-                description: '', 
-                key: '', 
-                route: '//',
-                ImageUrl: '',
-            },
-            { 
-                title: '', 
-                description: '', 
-                key: '', 
-                route: '//',
-                ImageUrl: '',
-            },
-            { 
-                title: '', 
-                description: '', 
-                key: '', 
-                route: '//',
                 ImageUrl: '',
             },
             

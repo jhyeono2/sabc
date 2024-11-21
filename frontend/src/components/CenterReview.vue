@@ -31,6 +31,7 @@
             <String label="ExportCountry" v-model="value.exportCountry" :editMode="editMode" :inputUI="''"/>
             <Number label="BranchNo" v-model="value.branchNo" :editMode="editMode" :inputUI="''"/>
             <String label="Status" v-model="value.status" :editMode="editMode" :inputUI="''"/>
+            <String label="Message" v-model="value.message" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions style="background-color: white;">

@@ -7,6 +7,10 @@ import java.util.List;
 import javax.persistence.*;
 import lombok.Data;
 import sabc.CenterApplication;
+import sabc.domain.Approved;
+import sabc.domain.Comleted;
+import sabc.domain.FirstConfirmed;
+import sabc.domain.Rejected;
 
 @Entity
 @Table(name = "Review_table")
@@ -47,6 +51,23 @@ public class Review {
     private Integer branchNo;
 
     private String status;
+
+    private String message;
+
+    @PostPersist
+    public void onPostPersist() {
+        FirstConfirmed firstConfirmed = new FirstConfirmed(this);
+        firstConfirmed.publishAfterCommit();
+
+        Rejected rejected = new Rejected(this);
+        rejected.publishAfterCommit();
+
+        Approved approved = new Approved(this);
+        approved.publishAfterCommit();
+
+        Comleted comleted = new Comleted(this);
+        comleted.publishAfterCommit();
+    }
 
     public static ReviewRepository repository() {
         ReviewRepository reviewRepository = CenterApplication.applicationContext.getBean(
@@ -151,6 +172,10 @@ public class Review {
         Review review = new Review();
         repository().save(review);
 
+        Comleted comleted = new Comleted(review);
+        comleted.publishAfterCommit();
+        Rejected rejected = new Rejected(review);
+        rejected.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -160,6 +185,10 @@ public class Review {
             review // do something
             repository().save(review);
 
+            Comleted comleted = new Comleted(review);
+            comleted.publishAfterCommit();
+            Rejected rejected = new Rejected(review);
+            rejected.publishAfterCommit();
 
          });
         */
@@ -175,6 +204,10 @@ public class Review {
         Review review = new Review();
         repository().save(review);
 
+        Comleted comleted = new Comleted(review);
+        comleted.publishAfterCommit();
+        Rejected rejected = new Rejected(review);
+        rejected.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -184,6 +217,10 @@ public class Review {
             review // do something
             repository().save(review);
 
+            Comleted comleted = new Comleted(review);
+            comleted.publishAfterCommit();
+            Rejected rejected = new Rejected(review);
+            rejected.publishAfterCommit();
 
          });
         */

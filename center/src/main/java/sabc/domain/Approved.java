@@ -24,10 +24,11 @@ public class Approved extends AbstractEvent {
     private String exportCountry;
     private Integer branchNo;
     private String status;
-    private String userId;
-    private String userName;
+    private String customerId;
+    private String customerName;
     private String tranType;
     private String documentImg;
+    private String message;
 
     public Approved(Review aggregate) {
         super(aggregate);

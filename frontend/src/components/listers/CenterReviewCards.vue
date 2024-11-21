@@ -114,11 +114,12 @@
                 'goodsName': '',
                 'price': '',
                 'qty': 0,
-                'tradeDate': '2024-11-20',
+                'tradeDate': '2024-11-21',
                 'importCountry': '',
                 'exportCountry': '',
                 'branchNo': 0,
                 'status': '',
+                'message': '',
             }
         },
         methods:{

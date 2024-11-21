@@ -7,8 +7,6 @@ Vue.use(Router);
 
 import BranchAcceptManager from "./components/listers/BranchAcceptCards"
 import BranchAcceptDetail from "./components/listers/BranchAcceptDetail"
-import Manager from "./components/listers/Cards"
-import Detail from "./components/listers/Detail"
 
 import CenterReviewManager from "./components/listers/CenterReviewCards"
 import CenterReviewDetail from "./components/listers/CenterReviewDetail"
@@ -18,13 +16,7 @@ import SanctionSanctionDetail from "./components/listers/SanctionSanctionDetail"
 
 import HostAccountManager from "./components/listers/HostAccountCards"
 import HostAccountDetail from "./components/listers/HostAccountDetail"
-import Manager from "./components/listers/Cards"
-import Detail from "./components/listers/Detail"
 
-import Manager from "./components/listers/Cards"
-import Detail from "./components/listers/Detail"
-import Manager from "./components/listers/Cards"
-import Detail from "./components/listers/Detail"
 
 
 
@@ -41,16 +33,6 @@ export default new Router({
                 path: '/branches/accepts/:id',
                 name: 'BranchAcceptDetail',
                 component: BranchAcceptDetail
-            },
-            {
-                path: '//',
-                name: 'Manager',
-                component: Manager
-            },
-            {
-                path: '///:id',
-                name: 'Detail',
-                component: Detail
             },
 
             {
@@ -85,37 +67,7 @@ export default new Router({
                 name: 'HostAccountDetail',
                 component: HostAccountDetail
             },
-            {
-                path: '//',
-                name: 'Manager',
-                component: Manager
-            },
-            {
-                path: '///:id',
-                name: 'Detail',
-                component: Detail
-            },
 
-            {
-                path: '//',
-                name: 'Manager',
-                component: Manager
-            },
-            {
-                path: '///:id',
-                name: 'Detail',
-                component: Detail
-            },
-            {
-                path: '//',
-                name: 'Manager',
-                component: Manager
-            },
-            {
-                path: '///:id',
-                name: 'Detail',
-                component: Detail
-            },
 
 
 

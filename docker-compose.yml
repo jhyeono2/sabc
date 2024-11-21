@@ -22,6 +22,19 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
 
+  # gateway:
+  #   depends_on: 
+  #     - kafka
+  #   image: jhyeono2/gateway:v1
+  #   environment:
+  #     - SPRING_PROFILES_ACTIVE=docker
+  #   # command: mvn spring-boot:run
+  #   ports:
+  #     - 8080:8080
+  #   working_dir: /usr/src
+  #   volumes:
+  #     - ./branch:/usr/src
+  #     - ./maven-repo:/root/.m2
   branch:
     depends_on: 
       - kafka
@@ -63,7 +76,6 @@ services:
     volumes:
       - ./dashboard:/usr/src
       - ./maven-repo:/root/.m2
-      
   host:
     depends_on: 
       - kafka
@@ -77,7 +89,6 @@ services:
     volumes:
       - ./host:/usr/src
       - ./maven-repo:/root/.m2
-
   sanction:
     depends_on: 
       - kafka
@@ -91,18 +102,3 @@ services:
     volumes:
       - ./sanction:/usr/src
       - ./maven-repo:/root/.m2
-
-  swift:
-    depends_on: 
-      - kafka
-    image: jhyeono2/swift:v1
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    command: mvn spring-boot:run
-    ports:
-      - 8087:8087
-    working_dir: /usr/src
-    volumes:
-      - ./swift:/usr/src
-      - ./maven-repo:/root/.m2
-      

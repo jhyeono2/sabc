@@ -11,5 +11,5 @@ public class JobRejected extends AbstractEvent {
     private Long id;
     private String acceptNo;
     private String status;
-    private String resultMessage;
+    private String message;
 }
