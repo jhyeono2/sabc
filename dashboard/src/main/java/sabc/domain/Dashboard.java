@@ -13,9 +13,7 @@ import lombok.Data;
 public class Dashboard {
 
     @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-
     private String acceptNo;
     private String customerId;
     private String customerName;
