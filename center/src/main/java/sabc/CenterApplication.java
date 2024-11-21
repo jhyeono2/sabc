@@ -17,5 +17,6 @@ public class CenterApplication {
     public static void main(String[] args) {
         applicationContext =
             SpringApplication.run(CenterApplication.class, args);
+            System.out.println("#####CenterApplication start");
     }
 }

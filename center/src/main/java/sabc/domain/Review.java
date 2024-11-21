@@ -95,7 +95,7 @@ public class Review {
 
     //<<< Clean Arch / Port Method
     public static void regist(DocumentAccepted documentAccepted) {
-        System.out.println("regist start");
+        System.out.println("####regist start");
         //implement business logic here:
         Review review = new Review();
         review.setId(documentAccepted.getId());
@@ -108,41 +108,41 @@ public class Review {
         review.setStatus(documentAccepted.getStatus());
         System.out.println(review.toString());
         repository().save(review);
-        System.out.println("review data saved");
+        System.out.println("####review data saved");
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void receive2ndResult(SecondRejected secondRejected) {
-        System.out.println("receive secondRejected:" + secondRejected.getAcceptNo());
+        System.out.println("####receive secondRejected:" + secondRejected.getAcceptNo());
         Review review = repository().findById(secondRejected.getId()).orElseThrow();
         review.setStatus("secondRejected");
         repository().save(review);
 
         Rejected rejected = new Rejected(review);
         rejected.setMessage(secondRejected.getMessage());
-        System.out.println("secondReject Message:"+rejected.getMessage());
+        System.out.println("####secondReject Message:"+rejected.getMessage());
         rejected.publishAfterCommit();
-        System.out.println("rejected publish");
+        System.out.println("####rejected publish");
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void receive2ndResult(SecondConfirmed secondConfirmed) {
-        System.out.println("receive secondConfirmed:" + secondConfirmed.getAcceptNo());
+        System.out.println("####receive secondConfirmed:" + secondConfirmed.getAcceptNo());
         Review review = repository().findById(secondConfirmed.getId()).orElseThrow();
         review.setStatus("secondConfirmed");
         repository().save(review);
 
         Approved approved = new Approved(review);
         approved.publishAfterCommit();
-        System.out.println("approved publish");
+        System.out.println("####approved publish");
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void receiveFinalResult(JobCompleted jobCompleted) {
-        System.out.println("receive FinalResult jobCompleted");
+        System.out.println("####receive FinalResult jobCompleted");
         Review review = repository().findById(jobCompleted.getId()).orElseThrow();
         review.setStatus("finalConfirmed");
         repository().save(review);
@@ -153,13 +153,13 @@ public class Review {
         completed.setStatus(jobCompleted.getStatus());
         completed.setMessage(jobCompleted.getMessage());
         completed.publishAfterCommit();
-        System.out.println("publish confirmed");
+        System.out.println("####publish confirmed");
     }
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void receiveFinalResult(JobRejected jobRejected) {
-        System.out.println("receive FinalResult jobRejected");
+        System.out.println("####receive FinalResult jobRejected");
         Review review = repository().findById(jobRejected.getId()).orElseThrow();
         review.setStatus("finalRejected");
         repository().save(review);
@@ -170,7 +170,7 @@ public class Review {
         rejected.setStatus(jobRejected.getStatus());
         rejected.setMessage(jobRejected.getMessage());
         rejected.publishAfterCommit();
-        System.out.println("publish reject");
+        System.out.println("####publish reject");
     }
 
 }
