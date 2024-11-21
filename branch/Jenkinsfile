@@ -83,7 +83,7 @@ pipeline {
                 dir('branch') {
                     script {
                         sh """
-                        sed -i 's|image: \${REGISTRY}/${IMAGE_NAME}:.*\|image: \${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_ID}\|' kubernetes/deployment.yaml
+                        sed -i 's|image: \"${REGISTRY}/${IMAGE_NAME}:.*\"|image: \"${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_ID}\"|' kubernetes/deployment.yaml
                         cat kubernetes/deployment.yaml
                         """
                     }
