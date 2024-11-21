@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: center
+  name: sanction
   labels:
-    app: center
+    app: sanction
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: center
+      app: sanction
   template:
     metadata:
       labels:
-        app: center
+        app: sanction
     spec:
       containers:
-        - name: center
-          image: "user15.azurecr.io/center:v2"
+        - name: sanction
+          image: "user15.azurecr.io/sanction:v1"
           ports:
-            - containerPort: 8083
+            - containerPort: 8086
           readinessProbe:
             httpGet:
               path: '/actuator/health'
-              port: 8083
+              port: 8086
             initialDelaySeconds: 10
             timeoutSeconds: 2
             periodSeconds: 5
@@ -30,7 +30,7 @@ spec:
           livenessProbe:
             httpGet:
               path: '/actuator/health'
-              port: 8083
+              port: 8086
             initialDelaySeconds: 120
             timeoutSeconds: 2
             periodSeconds: 5
