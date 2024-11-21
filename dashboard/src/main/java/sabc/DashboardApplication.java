@@ -17,6 +17,6 @@ public class DashboardApplication {
     public static void main(String[] args) {
         applicationContext =
         SpringApplication.run(DashboardApplication.class, args);
-        System.out.println("###########dashboard spring start");
+        System.out.println("###########dashboard spring start2222");
     }
 }
