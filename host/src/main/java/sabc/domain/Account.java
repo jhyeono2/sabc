@@ -77,7 +77,7 @@ public class Account {
             jobCompleted.setId(account.getId());
             jobCompleted.setAcceptNo(account.getAcceptNo());
             jobCompleted.setStatus("confimed");
-            jobCompleted.setResultMessage("confimed");
+            jobCompleted.setMessage("confimed");
             jobCompleted.publishAfterCommit();
         }else{
             account.setStatus("finalRejected");
@@ -87,7 +87,7 @@ public class Account {
             jobRejected.setId(account.getId());
             jobRejected.setAcceptNo(account.getAcceptNo());
             jobRejected.setStatus(account.getStatus());
-            jobRejected.setResultMessage("10000불 이상은 거래불가");
+            jobRejected.setMessage("10000불 이상은 거래불가");
             jobRejected.publishAfterCommit();
         }
     }

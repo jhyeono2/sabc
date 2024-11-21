@@ -54,20 +54,22 @@ public class Sanction {
         sanction.setCounterPartyName(firstConfirmed.getCounterPartyName());
         sanction.setImportCountry(firstConfirmed.getImportCountry());
         sanction.setExportCountry(firstConfirmed.getExportCountry());
-        sanction.setStatus(firstConfirmed.getStatus());
         
         System.out.println("sanction save:"+sanction.toString());
-        repository().save(sanction);
-
+        
         if("KIMJEONGEUN".equals(sanction.getCounterPartyName())){
+            sanction.setStatus("secondRejected");
+            repository().save(sanction);
             SecondRejected secondRejected = new SecondRejected();
             secondRejected.setId(sanction.getId());
             secondRejected.setAcceptNo(sanction.getAcceptNo());
-            secondRejected.setStatus("reject");
+            secondRejected.setStatus("secondRejected");
             secondRejected.setMessage("KIMJEONGEUN cannot confirmed");
             secondRejected.publishAfterCommit();
             System.out.println("secondReject publish");
         }else{
+            sanction.setStatus("secondConfirmed");
+            repository().save(sanction);
             SecondConfirmed secondConfirmed = new SecondConfirmed();
             secondConfirmed.setId(sanction.getId());
             secondConfirmed.setAcceptNo(sanction.getAcceptNo());
