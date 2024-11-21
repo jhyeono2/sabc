@@ -61,8 +61,26 @@ public class Review {
     public void onPostUpdate() {
         String status = this.getStatus();
         System.out.println("status after patch:"+status);
+        Review review = repository().findById(this.getId()).orElseThrow();
         switch (status) {
+            case "accepted":
+                review.setId(this.getId());
+                review.setCounterPartyId(this.getCounterPartyId());
+                review.setCounterPartyName(this.getCounterPartyName());
+                review.setGoodsName(this.getGoodsName());
+                review.setPrice(this.getPrice());
+                review.setQty(this.getQty());
+                review.setTradeDate(this.getTradeDate());
+                review.setImportCountry(this.getImportCountry());
+                review.setExportCountry(this.getExportCountry());
+                System.out.println(review.toString());
+                repository().save(review);
+                break;
             case "firstConfirmed":
+                review.setId(this.getId());
+                review.setStatus(this.getStatus());
+                repository().save(review);
+
                 FirstConfirmed firstConfirmed = new FirstConfirmed(this);
                 firstConfirmed.publishAfterCommit();
                 System.out.println("firstConfirm publish");
