@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
         - name: dashboard
-          image: "user15.azurecr.io/dashboard:v1"
+          image: "user15.azurecr.io/dashboard:v10"
           ports:
             - containerPort: 8084
           readinessProbe:
             httpGet:
               path: '/actuator/health'
               port: 8084
-            initialDelaySeconds: 10
+            initialDelaySeconds: 20
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 10
