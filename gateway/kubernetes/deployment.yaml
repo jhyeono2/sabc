@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: user15.azurecr.io/gateway:v1
+          image: "user15.azurecr.io/gateway:v1"
           ports:
             - containerPort: 8081
