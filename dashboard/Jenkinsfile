@@ -29,7 +29,7 @@ pipeline {
         
         stage('Maven Build') {
             steps {
-                dir(${IMAGE_NAME}) {
+                dir("${IMAGE_NAME}") {
                     sh 'mvn package -DskipTests'
                 }
             }
@@ -37,7 +37,7 @@ pipeline {
         
         stage('Docker Build') {
             steps {
-                dir(${IMAGE_NAME}) {
+                dir("${IMAGE_NAME}") {
                     script {
                         image = docker.build("${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_NUMBER}")
                     }
@@ -47,7 +47,7 @@ pipeline {
         
         stage('Azure Login') {
             steps {
-                dir(${IMAGE_NAME}) {
+                dir("${IMAGE_NAME}") {
                     script {
                         withCredentials([usernamePassword(credentialsId: env.AZURE_CREDENTIALS_ID, usernameVariable: 'AZURE_CLIENT_ID', passwordVariable: 'AZURE_CLIENT_SECRET')]) {
                             sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET --tenant ${TENANT_ID}'
@@ -59,7 +59,7 @@ pipeline {
         
         stage('Push to ACR') {
             steps {
-                dir(${IMAGE_NAME}) {
+                dir("${IMAGE_NAME}") {
                     script {
                         sh "az acr login --name ${REGISTRY.split('\\.')[0]}"
                         sh "docker push ${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_NUMBER}"
@@ -70,7 +70,7 @@ pipeline {
         
         stage('CleanUp Images') {
             steps {
-                dir(${IMAGE_NAME}) {
+                dir("${IMAGE_NAME}") {
                         sh """
                         docker rmi ${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_NUMBER}
                         """
@@ -80,7 +80,7 @@ pipeline {
 
         stage('Update deploy.yaml') {
             steps {
-                dir(${IMAGE_NAME}) {
+                dir("${IMAGE_NAME}") {
                     script {
                         sh """
                         sed -i 's|image: \"${REGISTRY}/${IMAGE_NAME}:.*\"|image: \"${REGISTRY}/${IMAGE_NAME}:v${env.BUILD_ID}\"|' kubernetes/deployment.yaml
@@ -93,7 +93,7 @@ pipeline {
         
         stage('Commit and Push to GitHub') {
             steps {
-                dir(${IMAGE_NAME}) {
+                dir("${IMAGE_NAME}") {
                     script {
                         withCredentials([usernamePassword(credentialsId: GITHUB_CREDENTIALS_ID, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                             sh """
