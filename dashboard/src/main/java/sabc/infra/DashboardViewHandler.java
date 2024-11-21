@@ -130,7 +130,7 @@ public class DashboardViewHandler {
         @Payload FirstConfirmed firstConfirmed
     ) {
         try {
-            System.out.println("########firstConfirmed"+ firstConfirmed.toString());
+            System.out.println("########firstConfirmed1234"+ firstConfirmed.toString());
             if (!firstConfirmed.validate()) return;
             // view 객체 조회
 
