@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 ---
 
@@ -29,14 +29,6 @@ spring:
           uri: http://localhost:8086
           predicates:
             - Path=/sanctions/**, 
-        - id: swift
-          uri: http://localhost:8087
-          predicates:
-            - Path=, 
-        - id: frontend
-          uri: http://localhost:8088
-          predicates:
-            - Path=/**
 #>>> API Gateway / Routes
       globalcors:
         corsConfigurations:
@@ -77,14 +69,6 @@ spring:
           uri: http://sanction:8086
           predicates:
             - Path=/sanctions/**, 
-        - id: swift
-          uri: http://swift:8087
-          predicates:
-            - Path=/swift/**, 
-        - id: frontend
-          uri: http://frontend:8088
-          predicates:
-            - Path=/**
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -97,4 +81,4 @@ spring:
             allowCredentials: true
 
 server:
-  port: 8080
+  port: 8081

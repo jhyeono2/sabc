@@ -1,30 +1,71 @@
 cd /workspace/sabc/gateway
 mvn clean package
-docker build --no-cache -t jhyeono2/gateway:v1 .
-docker push jhyeono2/gateway:v1
+docker build --no-cache -t user15.azurecr.io/gateway:v1 .
+docker push user15.azurecr.io/gateway:v1
+
+cd /workspace/sabc/branch
+mvn clean package
+docker build --no-cache -t user15.azurecr.io/branch:v1 .
+docker push user15.azurecr.io/branch:v1
 
 cd /workspace/sabc/center
 mvn clean package
-docker build --no-cache -t jhyeono2/center:v1 .
-docker push jhyeono2/center:v1
+docker build --no-cache -t user15.azurecr.io/center:v1 .
+docker push user15.azurecr.io/center:v1
 
 cd /workspace/sabc/dashboard
 mvn clean package
-docker build --no-cache -t jhyeono2/dashboard:v1 .
-docker push jhyeono2/dashboard:v1
+docker build --no-cache -t user15.azurecr.io/dashboard:v1 .
+docker push user15.azurecr.io/dashboard:v1
+
+
 
 cd /workspace/sabc/host
 mvn clean package
-docker build --no-cache -t jhyeono2/host:v1 .
-docker push jhyeono2/host:v1
+docker build --no-cache -t user15.azurecr.io/host:v1 .
+docker push user15.azurecr.io/host:v1
+
 
 cd /workspace/sabc/sanction
 mvn clean package
-docker build --no-cache -t jhyeono2/sanction:v1 .
-docker push jhyeono2/sanction:v1
+docker build --no-cache -t user15.azurecr.io/sanction:v1 .
+docker push user15.azurecr.io/sanction:v1
 
-cd /workspace/sabc/swift
-mvn clean package
-docker build --no-cache -t jhyeono2/swift:v1 .
-docker push jhyeono2/swift:v1
 
+
+
+==========================
+cd /workspace/sabc/gateway/kubernetes
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+
+
+cd /workspace/sabc/branch/kubernetes
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+
+cd /workspace/sabc/center/kubernetes
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+
+cd /workspace/sabc/dashboard/kubernetes
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+cd /workspace/sabc/host/kubernetes
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+cd /workspace/sabc/sanction/kubernetes
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+========================
+kubectl scale deploy branch --replicas=3
+
+kubectl autoscale deployment branch --cpu-percent=50 --min=1 --max=3
+
+siege -c20 -t40S -v http://20.249.200.123:8081/accepts

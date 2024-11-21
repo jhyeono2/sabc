@@ -6,7 +6,7 @@ metadata:
     app: center
 spec:
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 8083
+      targetPort: 8083
   selector:
     app: center
