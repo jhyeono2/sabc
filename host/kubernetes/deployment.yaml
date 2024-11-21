@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: host
-          image: "user15.azurecr.io/host:v1"
+          image: "user15.azurecr.io/host:v3"
           ports:
             - containerPort: 8085
           readinessProbe:
