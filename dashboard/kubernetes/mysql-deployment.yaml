@@ -23,8 +23,7 @@ spec:
       mountPath: /var/lib/mysql
   volumes:
   - name: k8s-mysql-storage
-    persistentVolumeClaim:
-      claimName: "fs"  
+    emptyDir: {}
 
 ---
 apiVersion: v1
