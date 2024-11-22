@@ -22,7 +22,7 @@ public class DashboardViewHandler {
         @Payload DocumentAccepted documentAccepted
     ) {
         try {
-            System.out.println("##############whenDocumentAccepted_then_CREATE_11111");
+            System.out.println("##############whenDocumentAccepted_then_CREATE");
             if (!documentAccepted.validate()) return;
 
             // view 객체 생성
@@ -36,6 +36,7 @@ public class DashboardViewHandler {
             dashboard.setCustomerName(documentAccepted.getCustomerName());
             // view 레파지 토리에 save
             dashboardRepository.save(dashboard);
+            System.out.println("saved:"+dashboard.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -130,7 +131,7 @@ public class DashboardViewHandler {
         @Payload FirstConfirmed firstConfirmed
     ) {
         try {
-            System.out.println("########firstConfirmed1234"+ firstConfirmed.toString());
+            System.out.println("########firstConfirmed"+ firstConfirmed.toString());
             if (!firstConfirmed.validate()) return;
             // view 객체 조회
 
