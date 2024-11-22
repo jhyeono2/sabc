@@ -2,7 +2,7 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 az login --use-device-code
 az aks get-credentials --resource-group user15-rsrcgrp --name user15-aks
 
-http localhost:8081/accepts
+http://20.249.200.123:8081/accepts
 http  http://20.249.200.123:8081/accepts acceptNo=888   customerId=888 customerName=test888 branchNo=860 documentImg=scan.img tranType=LCcreate status=accepted 
 
 http PATCH http://20.249.200.123:8081/reviews/3 counterPartyId=3003 counterPartyName=test_party goodsName=Electronics price:=150000000.75 qty:=100 tradeDate="2024-11-21" importCountry=Korea exportCountry=China
