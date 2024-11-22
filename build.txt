@@ -69,3 +69,6 @@ kubectl scale deploy branch --replicas=3
 kubectl autoscale deployment branch --cpu-percent=50 --min=1 --max=3
 
 siege -c20 -t40S -v http://20.249.200.123:8081/accepts
+
+==============
+argo NkSPzs109KtwUZeM
