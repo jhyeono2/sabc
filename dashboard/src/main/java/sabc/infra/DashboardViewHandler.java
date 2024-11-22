@@ -45,6 +45,8 @@ public class DashboardViewHandler {
     @StreamListener(KafkaProcessor.INPUT)
     public void whenRejected_then_UPDATE_1(@Payload Rejected rejected) {
         try {
+            System.out.println("##############whenRejected_then_UPDATE_1");
+
             if (!rejected.validate()) return;
             // view 객체 조회
 
@@ -65,6 +67,8 @@ public class DashboardViewHandler {
     @StreamListener(KafkaProcessor.INPUT)
     public void whenApproved_then_UPDATE_2(@Payload Approved approved) {
         try {
+            System.out.println("##############whenApproved_then_UPDATE_2");
+
             if (!approved.validate()) return;
             // view 객체 조회
 
@@ -87,6 +91,8 @@ public class DashboardViewHandler {
         @Payload JobCompleted jobCompleted
     ) {
         try {
+            System.out.println("##############whenJobCompleted_then_UPDATE_3");
+
             if (!jobCompleted.validate()) return;
             // view 객체 조회
 
@@ -109,6 +115,8 @@ public class DashboardViewHandler {
         @Payload JobRejected jobRejected
     ) {
         try {
+            System.out.println("##############whenJobRejected_then_UPDATE_4");
+
             if (!jobRejected.validate()) return;
             // view 객체 조회
 
@@ -177,6 +185,8 @@ public class DashboardViewHandler {
         @Payload SecondRejected secondRejected
     ) {
         try {
+            System.out.println("############whenSecondRejected_then_UPDATE_7:"+secondRejected.toString());
+
             if (!secondRejected.validate()) return;
             // view 객체 조회
 
@@ -193,14 +203,4 @@ public class DashboardViewHandler {
             e.printStackTrace();
         }
     }
-
-    @StreamListener(KafkaProcessor.INPUT)
-    public void whenRejected_then_DELETE_1(@Payload Rejected rejected) {
-        try {
-            if (!rejected.validate()) return;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    //>>> DDD / CQRS
 }
