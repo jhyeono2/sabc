@@ -1,74 +1,20 @@
-cd /workspace/sabc/gateway
-mvn clean package
-docker build --no-cache -t user15.azurecr.io/gateway:v1 .
-docker push user15.azurecr.io/gateway:v1
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash 
+az login --use-device-code
+az aks get-credentials --resource-group user15-rsrcgrp --name user15-aks
 
-cd /workspace/sabc/branch
-mvn clean package
-docker build --no-cache -t user15.azurecr.io/branch:v1 .
-docker push user15.azurecr.io/branch:v1
+http localhost:8081/accepts
+http  http://20.249.200.123:8081/accepts acceptNo=888   customerId=888 customerName=test888 branchNo=860 documentImg=scan.img tranType=LCcreate status=accepted 
 
-cd /workspace/sabc/center
-mvn clean package
-docker build --no-cache -t user15.azurecr.io/center:v1 .
-docker push user15.azurecr.io/center:v1
+http PATCH http://20.249.200.123:8081/reviews/3 counterPartyId=3003 counterPartyName=test_party goodsName=Electronics price:=150000000.75 qty:=100 tradeDate="2024-11-21" importCountry=Korea exportCountry=China
 
-cd /workspace/sabc/dashboard
-mvn clean package
-docker build --no-cache -t user15.azurecr.io/dashboard:v1 .
-docker push user15.azurecr.io/dashboard:v1
+http PATCH http://20.249.200.123:8081/reviews/3  status=firstConfirmed
 
+kubectl get service -n istio-system
 
+ㅇ 젠킨스 http://52.231.107.89:8080/
+admin admin
+ㅇ argo https://20.249.193.26/ 
+admin NkSPzs109KtwUZeM
 
-cd /workspace/sabc/host
-mvn clean package
-docker build --no-cache -t user15.azurecr.io/host:v1 .
-docker push user15.azurecr.io/host:v1
-
-
-cd /workspace/sabc/sanction
-mvn clean package
-docker build --no-cache -t user15.azurecr.io/sanction:v1 .
-docker push user15.azurecr.io/sanction:v1
-
-
-
-
-==========================
-cd /workspace/sabc/gateway/kubernetes
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-
-
-
-cd /workspace/sabc/branch/kubernetes
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-
-
-cd /workspace/sabc/center/kubernetes
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-
-
-cd /workspace/sabc/dashboard/kubernetes
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-
-cd /workspace/sabc/host/kubernetes
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-
-cd /workspace/sabc/sanction/kubernetes
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-
-========================
-kubectl scale deploy branch --replicas=3
-
-kubectl autoscale deployment branch --cpu-percent=50 --min=1 --max=3
-
-siege -c20 -t40S -v http://20.249.200.123:8081/accepts
-
-==============
-argo NkSPzs109KtwUZeM
+ㅇ kiali: http://4.230.149.127/kiali
+ㅇ jaeger : 20.249.168.144
