@@ -22,8 +22,8 @@ public class DashboardViewHandler {
         @Payload DocumentAccepted documentAccepted
     ) {
         try {
-            System.out.println("##############whenDocumentAccepted_then_CREATE");
             if (!documentAccepted.validate()) return;
+            System.out.println("##############whenDocumentAccepted_then_CREATE");
 
             // view 객체 생성
             Dashboard dashboard = new Dashboard();
@@ -45,9 +45,8 @@ public class DashboardViewHandler {
     @StreamListener(KafkaProcessor.INPUT)
     public void whenRejected_then_UPDATE_1(@Payload Rejected rejected) {
         try {
-            System.out.println("##############whenRejected_then_UPDATE_1");
-
             if (!rejected.validate()) return;
+            System.out.println("##############whenRejected_then_UPDATE_1");
             // view 객체 조회
 
             List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
@@ -67,9 +66,8 @@ public class DashboardViewHandler {
     @StreamListener(KafkaProcessor.INPUT)
     public void whenApproved_then_UPDATE_2(@Payload Approved approved) {
         try {
-            System.out.println("##############whenApproved_then_UPDATE_2");
-
             if (!approved.validate()) return;
+            System.out.println("##############whenApproved_then_UPDATE_2");
             // view 객체 조회
 
             List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
@@ -91,9 +89,8 @@ public class DashboardViewHandler {
         @Payload JobCompleted jobCompleted
     ) {
         try {
-            System.out.println("##############whenJobCompleted_then_UPDATE_3");
-
             if (!jobCompleted.validate()) return;
+            System.out.println("##############whenJobCompleted_then_UPDATE_3");
             // view 객체 조회
 
             List<Dashboard> statusList = dashboardRepository.findByAcceptNo(
@@ -115,9 +112,8 @@ public class DashboardViewHandler {
         @Payload JobRejected jobRejected
     ) {
         try {
-            System.out.println("##############whenJobRejected_then_UPDATE_4");
-
             if (!jobRejected.validate()) return;
+            System.out.println("##############whenJobRejected_then_UPDATE_4");
             // view 객체 조회
 
             List<Dashboard> statusList = dashboardRepository.findByAcceptNo(
@@ -139,8 +135,8 @@ public class DashboardViewHandler {
         @Payload FirstConfirmed firstConfirmed
     ) {
         try {
-            System.out.println("########firstConfirmed"+ firstConfirmed.toString());
             if (!firstConfirmed.validate()) return;
+            System.out.println("########firstConfirmed"+ firstConfirmed.toString());
             // view 객체 조회
 
             List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
@@ -162,8 +158,8 @@ public class DashboardViewHandler {
         @Payload SecondConfirmed secondConfirmed
     ) {
         try {
-            System.out.println("############secondConfirmed:"+secondConfirmed.toString());
             if (!secondConfirmed.validate()) return;
+            System.out.println("############secondConfirmed:"+secondConfirmed.toString());
             // view 객체 조회
 
             List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
@@ -185,9 +181,8 @@ public class DashboardViewHandler {
         @Payload SecondRejected secondRejected
     ) {
         try {
-            System.out.println("############whenSecondRejected_then_UPDATE_7:"+secondRejected.toString());
-
             if (!secondRejected.validate()) return;
+            System.out.println("############whenSecondRejected_then_UPDATE_7:"+secondRejected.toString());
             // view 객체 조회
 
             List<Dashboard> dashboardList = dashboardRepository.findByAcceptNo(
